@@ -5,10 +5,14 @@ import Button from "./button";
 import { redirect } from "next/navigation";
 
 interface AppBarProps {
-  exitButton: boolean;
+  exitButton?: boolean;
+  goBack?: boolean;
 }
 
-export default function AppBar({ exitButton }: AppBarProps) {
+export default function AppBar({
+  exitButton = false,
+  goBack = false,
+}: AppBarProps) {
   return (
     <div
       className={`fixed top-0 left-0 w-full h-22 z-50
@@ -31,6 +35,15 @@ export default function AppBar({ exitButton }: AppBarProps) {
           alt="Palpita Muito logo"
         />
       </div>
+      {goBack && (
+        <div className="absolute left-5">
+          <Button
+            children="Voltar"
+            color="white"
+            onClick={() => redirect("/")}
+          />
+        </div>
+      )}
       {exitButton && (
         <div className="absolute right-5">
           <Button children="Sair" color="white" onClick={() => signOut()} />
