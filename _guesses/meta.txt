@@ -1,0 +1,74 @@
+Mexico 2-1 South Africa  
+South Korea 1-1 Czech Republic  
+Canada 2-0 Bosnia  
+United States 3-1 Paraguay  
+Qatar 0-2 Switzerland  
+Brazil 3-0 Morocco  
+Haiti 1-2 Scotland  
+Australia 2-1 Turkey  
+Germany 4-0 Curaçao  
+Netherlands 2-1 Japan  
+Ivory Coast 1-1 Ecuador  
+Sweden 2-0 Tunisia  
+Spain 3-0 Cape Verde  
+Belgium 2-1 Egypt  
+Saudi Arabia 1-2 Uruguay  
+Iran 1-1 New Zealand  
+France 2-0 Senegal  
+Iraq 0-2 Norway  
+Argentina 3-0 Algeria  
+Austria 2-0 Jordan  
+Portugal 3-1 DR Congo  
+England 2-1 Croatia  
+Ghana 1-0 Panama  
+Uzbekistan 1-2 Colombia
+
+Czech Republic 2-0 South Africa  
+Switzerland 2-1 Bosnia  
+Canada 1-0 Qatar  
+Mexico 2-2 South Korea  
+United States 2-1 Australia  
+Scotland 1-1 Morocco  
+Brazil 4-0 Haiti  
+Türkiye 1-1 Paraguay  
+Netherlands 1-1 Sweden  
+Germany 2-0 Ivory Coast  
+Ecuador 3-0 Curacao  
+Tunisia 0-2 Japan  
+Spain 2-0 Saudi Arabia  
+Belgium 3-1 Iran  
+Uruguay 2-0 Cape Verde  
+New Zealand 0-2 Egypt  
+Argentina 2-0 Austria  
+France 3-1 Iraq  
+Norway 1-1 Senegal  
+Jordan 1-2 Algeria  
+Portugal 2-0 Uzbekistan  
+England 2-0 Ghana  
+Panama 0-2 Croatia  
+Colombia 2-1 DR Congo
+
+Switzerland 1-0 Canada  
+Bosnia 1-1 Qatar  
+Morocco 2-1 Haiti  
+Scotland 0-3 Brazil  
+South Africa 1-2 South Korea  
+Czech Republic 1-0 Mexico  
+Ecuador 2-1 Germany  
+Curaçao 0-3 Ivory Coast  
+Tunisia 1-2 Netherlands  
+Japan 1-1 Sweden  
+Türkiye 1-2 United States  
+Paraguay 1-1 Australia  
+Senegal 2-1 Iraq  
+Norway 1-2 France  
+Cape Verde 0-2 Saudi Arabia  
+Uruguay 1-2 Spain  
+Egypt 1-1 Iran  
+New Zealand 0-3 Belgium  
+Croatia 2-1 Ghana  
+Panama 0-3 England  
+DR Congo 1-2 Uzbekistan  
+Colombia 1-2 Portugal  
+Jordan 0-2 Argentina  
+Algeria 1-1 Austria

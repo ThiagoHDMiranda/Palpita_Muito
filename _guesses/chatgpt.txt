@@ -1,0 +1,74 @@
+Mexico 2–0 South Africa
+South Korea 2–1 Czech Republic
+Canada 2–1 Bosnia
+United States 2–1 Paraguay
+Switzerland 2–0 Qatar
+Brazil 2–1 Morocco
+Scotland 2–0 Haiti
+Türkiye 2–1 Australia
+Germany 4–0 Curaçao
+Netherlands 2–1 Japan
+Ivory Coast 1–1 Ecuador
+Sweden 1–0 Tunisia
+Spain 3–0 Cape Verde
+Belgium 2–1 Egypt
+Uruguay 2–0 Saudi Arabia
+Iran 2–0 New Zealand
+France 2–1 Senegal
+Norway 3–1 Iraq
+Argentina 3–1 Algeria
+Austria 2–0 Jordan
+Portugal 3–0 DR Congo
+England 2–1 Croatia
+Ghana 2–1 Panama
+Colombia 2–0 Uzbekistan
+
+Czech Republic 2–0 South Africa
+Switzerland 2–0 Bosnia
+Canada 2–0 Qatar
+Mexico 2–1 South Korea
+United States 2–1 Australia
+Scotland 1–1 Morocco
+Brazil 3–0 Haiti
+Türkiye 2–0 Paraguay
+Netherlands 2–1 Sweden
+Germany 2–1 Ivory Coast
+Ecuador 2-0 Curacao
+Tunisia 1-2 Japan
+Spain 3–1 Saudi Arabia
+Belgium 2–1 Iran
+Uruguay 2–0 Cape Verde
+Egypt 1–1 New Zealand
+Argentina 2–1 Austria
+France 3–0 Iraq
+Norway 1–1 Senegal
+Jordan 1-2 Algeria
+Portugal 2–0 Uzbekistan
+England 2–1 Ghana
+Croatia 2–0 Panama
+Colombia 2–1 DR Congo
+
+Switzerland 2–1 Canada
+Bosnia 2–1 Qatar
+Morocco 2–0 Haiti
+Brazil 3–1 Scotland
+South Korea 2–0 South Africa
+Mexico 2–1 Czech Republic
+Germany 3–1 Ecuador
+Ivory Coast 3–0 Curaçao
+Netherlands 2–0 Tunisia
+Japan 1–1 Sweden
+United States 2–2 Türkiye
+Australia 2–1 Paraguay
+Senegal 2–0 Iraq
+France 2–1 Norway
+Saudi Arabia 2–1 Cape Verde
+Spain 2–1 Uruguay
+Iran 2–1 Egypt
+Belgium 3–0 New Zealand
+Croatia 1–1 Ghana
+England 3–0 Panama
+Uzbekistan 1–0 DR Congo
+Portugal 2–1 Colombia
+Argentina 3–0 Jordan
+Austria 2–1 Algeria
