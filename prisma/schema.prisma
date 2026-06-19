@@ -18,6 +18,7 @@ model User {
   id        String  @id @default(cuid())
   email     String  @unique
   name      String?
+  role      Role  @default(USER)
 
   guesses   Guess[]
   createdAt DateTime @default(now())
@@ -44,4 +45,9 @@ model MatchResult {
   awayGoals Int
 
   updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+  USER
 }

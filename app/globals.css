@@ -6,6 +6,7 @@
   --background: #09090b;
   --foreground: #fafafa;
   --primary: #fe9a00;
+  /* --primary: #ff9c00; */
   --secondary: #0b3f22;
   --gray: #bbbbbb;
 }
@@ -37,6 +38,9 @@ body {
   radial-gradient(at 50% 100%, #1d4ed81a 0px, transparent 80%); */
   background-attachment: fixed;
   overflow-x: hidden;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
 /* aaaaaa a*/

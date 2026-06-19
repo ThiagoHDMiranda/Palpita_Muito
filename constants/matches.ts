@@ -1,14 +1,16 @@
 import { StadiumsType } from "./stadiums";
 import TEAMS, { TeamType } from "./teams";
 
+const ROUNDS = ["1", "2", "3", "r32", "r16", "qf", "sf", "third", "final"];
+const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", ""];
+
 type MatchType = {
   id: number;
-  group: string;
-  round: "1" | "2" | "3" | "r32" | "r16" | "qf" | "sf" | "third" | "final";
+  group: (typeof GROUPS)[number];
+  round: (typeof ROUNDS)[number];
   homeTeam: TeamType; // Team or placeholder string like "1A", "Winner Match 73"
   awayTeam: TeamType;
-  date: string;
-  time: string;
+  datetime: Date;
   stadium: StadiumsType;
   // homeScore?: number;
   // awayScore?: number;
@@ -25,8 +27,7 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.MEX,
     awayTeam: TEAMS.RSA,
-    date: "2026-06-11",
-    time: "15:00",
+    datetime: new Date("2026-06-11T19:00:00Z"),
     stadium: "Estadio Azteca",
   },
   {
@@ -35,9 +36,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.KOR,
     awayTeam: TEAMS.CZE,
-    date: "2026-06-11",
-    time: "18:00",
-    stadium: "Hard Rock Stadium",
+    datetime: new Date("2026-06-12T02:00:00Z"),
+    stadium: "Estadio AKRON",
   },
   // Group B — 2026-06-11
   {
@@ -46,9 +46,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.CAN,
     awayTeam: TEAMS.BIH,
-    date: "2026-06-11",
-    time: "15:00",
-    stadium: "MetLife Stadium",
+    datetime: new Date("2026-06-12T19:00:00Z"),
+    stadium: "BMO Field",
   },
   {
     id: 4,
@@ -56,9 +55,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.QAT,
     awayTeam: TEAMS.SUI,
-    date: "2026-06-11",
-    time: "18:00",
-    stadium: "Lincoln Financial Field",
+    datetime: new Date("2026-06-13T19:00:00Z"),
+    stadium: "Levi's Stadium",
   },
   // Group C — 2026-06-12
   {
@@ -67,9 +65,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.BRA,
     awayTeam: TEAMS.MAR,
-    date: "2026-06-12",
-    time: "15:00",
-    stadium: "SoFi Stadium",
+    datetime: new Date("2026-06-13T22:00:00Z"),
+    stadium: "MetLife Stadium",
   },
   {
     id: 6,
@@ -77,9 +74,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.HAI,
     awayTeam: TEAMS.SCO,
-    date: "2026-06-12",
-    time: "18:00",
-    stadium: "Levi's Stadium",
+    datetime: new Date("2026-06-14T01:00:00Z"),
+    stadium: "Gillette Stadium",
   },
   // Group D — 2026-06-12
   {
@@ -88,9 +84,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.USA,
     awayTeam: TEAMS.PAR,
-    date: "2026-06-12",
-    time: "15:00",
-    stadium: "Mercedes-Benz Stadium",
+    datetime: new Date("2026-06-13T01:00:00Z"),
+    stadium: "SoFi Stadium",
   },
   {
     id: 8,
@@ -98,9 +93,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.AUS,
     awayTeam: TEAMS.TUR,
-    date: "2026-06-12",
-    time: "18:00",
-    stadium: "Lumen Field",
+    datetime: new Date("2026-06-14T04:00:00Z"),
+    stadium: "BC Place",
   },
   // Group E — 2026-06-13
   {
@@ -109,9 +103,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.GER,
     awayTeam: TEAMS.CUW,
-    date: "2026-06-13",
-    time: "15:00",
-    stadium: "Gillette Stadium",
+    datetime: new Date("2026-06-14T17:00:00Z"),
+    stadium: "NRG Stadium",
   },
   {
     id: 10,
@@ -119,9 +112,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.CIV,
     awayTeam: TEAMS.ECU,
-    date: "2026-06-13",
-    time: "18:00",
-    stadium: "BMO Field",
+    datetime: new Date("2026-06-14T23:00:00Z"),
+    stadium: "Lincoln Financial Field",
   },
   // Group F — 2026-06-13
   {
@@ -130,8 +122,7 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.NED,
     awayTeam: TEAMS.JPN,
-    date: "2026-06-13",
-    time: "15:00",
+    datetime: new Date("2026-06-14T20:00:00Z"),
     stadium: "AT&T Stadium",
   },
   {
@@ -140,9 +131,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.SWE,
     awayTeam: TEAMS.TUN,
-    date: "2026-06-13",
-    time: "18:00",
-    stadium: "BC Place",
+    datetime: new Date("2026-06-15T02:00:00Z"),
+    stadium: "Estadio BBVA",
   },
   // Group G — 2026-06-14
   {
@@ -151,9 +141,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.BEL,
     awayTeam: TEAMS.EGY,
-    date: "2026-06-14",
-    time: "15:00",
-    stadium: "NRG Stadium",
+    datetime: new Date("2026-06-15T19:00:00Z"),
+    stadium: "Lumen Field",
   },
   {
     id: 14,
@@ -161,9 +150,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.IRN,
     awayTeam: TEAMS.NZL,
-    date: "2026-06-14",
-    time: "18:00",
-    stadium: "Estadio AKRON",
+    datetime: new Date("2026-06-16T01:00:00Z"),
+    stadium: "SoFi Stadium",
   },
   // Group H — 2026-06-14
   {
@@ -172,19 +160,17 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.ESP,
     awayTeam: TEAMS.CPV,
-    date: "2026-06-14",
-    time: "15:00",
-    stadium: "Arrowhead Stadium",
+    datetime: new Date("2026-06-15T16:00:00Z"),
+    stadium: "Mercedes-Benz Stadium",
   },
   {
     id: 16,
     group: "H",
     round: "1",
-    homeTeam: TEAMS.URU,
-    awayTeam: TEAMS.KSA,
-    date: "2026-06-14",
-    time: "18:00",
-    stadium: "Estadio BBVA",
+    homeTeam: TEAMS.KSA,
+    awayTeam: TEAMS.URU,
+    datetime: new Date("2026-06-15T22:00:00Z"),
+    stadium: "Hard Rock Stadium",
   },
   // Group I — 2026-06-15
   {
@@ -193,9 +179,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.FRA,
     awayTeam: TEAMS.SEN,
-    date: "2026-06-15",
-    time: "15:00",
-    stadium: "Hard Rock Stadium",
+    datetime: new Date("2026-06-16T19:00:00Z"),
+    stadium: "MetLife Stadium",
   },
   {
     id: 18,
@@ -203,9 +188,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.IRQ,
     awayTeam: TEAMS.NOR,
-    date: "2026-06-15",
-    time: "18:00",
-    stadium: "Estadio Azteca",
+    datetime: new Date("2026-06-16T22:00:00Z"),
+    stadium: "Gillette Stadium",
   },
   // Group J — 2026-06-15
   {
@@ -214,9 +198,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.ARG,
     awayTeam: TEAMS.ALG,
-    date: "2026-06-15",
-    time: "15:00",
-    stadium: "Lincoln Financial Field",
+    datetime: new Date("2026-06-17T01:00:00Z"),
+    stadium: "Arrowhead Stadium",
   },
   {
     id: 20,
@@ -224,9 +207,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.AUT,
     awayTeam: TEAMS.JOR,
-    date: "2026-06-15",
-    time: "18:00",
-    stadium: "MetLife Stadium",
+    datetime: new Date("2026-06-17T04:00:00Z"),
+    stadium: "Levi's Stadium",
   },
   // Group K — 2026-06-16
   {
@@ -235,9 +217,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.POR,
     awayTeam: TEAMS.COD,
-    date: "2026-06-16",
-    time: "15:00",
-    stadium: "Levi's Stadium",
+    datetime: new Date("2026-06-17T17:00:00Z"),
+    stadium: "NRG Stadium",
   },
   {
     id: 22,
@@ -245,9 +226,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.UZB,
     awayTeam: TEAMS.COL,
-    date: "2026-06-16",
-    time: "18:00",
-    stadium: "SoFi Stadium",
+    datetime: new Date("2026-06-18T02:00:00Z"),
+    stadium: "Estadio Azteca",
   },
   // Group L — 2026-06-16
   {
@@ -256,9 +236,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.ENG,
     awayTeam: TEAMS.CRO,
-    date: "2026-06-16",
-    time: "15:00",
-    stadium: "Lumen Field",
+    datetime: new Date("2026-06-17T20:00:00Z"),
+    stadium: "AT&T Stadium",
   },
   {
     id: 24,
@@ -266,9 +245,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "1",
     homeTeam: TEAMS.GHA,
     awayTeam: TEAMS.PAN,
-    date: "2026-06-16",
-    time: "18:00",
-    stadium: "Mercedes-Benz Stadium",
+    datetime: new Date("2026-06-17T23:00:00Z"),
+    stadium: "BMO Field",
   },
 
   // ── ROUND 2 ─────────────────────────────────────────────────────────────────
@@ -277,63 +255,59 @@ const GROUP_MATCHES: MatchType[] = [
     id: 25,
     group: "A",
     round: "2",
-    homeTeam: TEAMS.MEX,
-    awayTeam: TEAMS.KOR,
-    date: "2026-06-17",
-    time: "15:00",
-    stadium: "Gillette Stadium",
+    homeTeam: TEAMS.CZE,
+    awayTeam: TEAMS.RSA,
+    datetime: new Date("2026-06-18T16:00:00Z"),
+    stadium: "Mercedes-Benz Stadium",
   },
   {
     id: 26,
     group: "A",
     round: "2",
-    homeTeam: TEAMS.CZE,
-    awayTeam: TEAMS.RSA,
-    date: "2026-06-17",
-    time: "18:00",
-    stadium: "BMO Field",
+    homeTeam: TEAMS.MEX,
+    awayTeam: TEAMS.KOR,
+    datetime: new Date("2026-06-19T01:00:00Z"),
+    stadium: "Estadio AKRON",
   },
+
   // Group B — 2026-06-17
   {
     id: 27,
     group: "B",
     round: "2",
-    homeTeam: TEAMS.CAN,
-    awayTeam: TEAMS.QAT,
-    date: "2026-06-17",
-    time: "15:00",
-    stadium: "AT&T Stadium",
+    homeTeam: TEAMS.SUI,
+    awayTeam: TEAMS.BIH,
+    datetime: new Date("2026-06-18T19:00:00Z"),
+    stadium: "SoFi Stadium",
   },
   {
     id: 28,
     group: "B",
     round: "2",
-    homeTeam: TEAMS.SUI,
-    awayTeam: TEAMS.BIH,
-    date: "2026-06-17",
-    time: "18:00",
+    homeTeam: TEAMS.CAN,
+    awayTeam: TEAMS.QAT,
+    datetime: new Date("2026-06-18T22:00:00Z"),
     stadium: "BC Place",
   },
   // Group C — 2026-06-18
+
   {
     id: 29,
     group: "C",
     round: "2",
-    homeTeam: TEAMS.BRA,
-    awayTeam: TEAMS.HAI,
-    date: "2026-06-18",
-    time: "15:00",
-    stadium: "NRG Stadium",
+    homeTeam: TEAMS.SCO,
+    awayTeam: TEAMS.MAR,
+    datetime: new Date("2026-06-19T22:00:00Z"),
+    stadium: "Gillette Stadium",
   },
   {
     id: 30,
     group: "C",
     round: "2",
-    homeTeam: TEAMS.SCO,
-    awayTeam: TEAMS.MAR,
-    date: "2026-06-18",
-    time: "18:00",
-    stadium: "Estadio AKRON",
+    homeTeam: TEAMS.BRA,
+    awayTeam: TEAMS.HAI,
+    datetime: new Date("2026-06-20T00:30:00Z"),
+    stadium: "Lincoln Financial Field",
   },
   // Group D — 2026-06-18
   {
@@ -342,9 +316,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.USA,
     awayTeam: TEAMS.AUS,
-    date: "2026-06-18",
-    time: "15:00",
-    stadium: "Arrowhead Stadium",
+    datetime: new Date("2026-06-19T19:00:00Z"),
+    stadium: "Lumen Field",
   },
   {
     id: 32,
@@ -352,9 +325,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.TUR,
     awayTeam: TEAMS.PAR,
-    date: "2026-06-18",
-    time: "18:00",
-    stadium: "Estadio BBVA",
+    datetime: new Date("2026-06-20T03:00:00Z"),
+    stadium: "Levi's Stadium",
   },
   // Group E — 2026-06-19
   {
@@ -363,9 +335,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.GER,
     awayTeam: TEAMS.CIV,
-    date: "2026-06-19",
-    time: "15:00",
-    stadium: "Hard Rock Stadium",
+    datetime: new Date("2026-06-20T20:00:00Z"),
+    stadium: "BMO Field",
   },
   {
     id: 34,
@@ -373,9 +344,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.ECU,
     awayTeam: TEAMS.CUW,
-    date: "2026-06-19",
-    time: "18:00",
-    stadium: "Estadio Azteca",
+    datetime: new Date("2026-06-21T00:00:00Z"),
+    stadium: "Arrowhead Stadium",
   },
   // Group F — 2026-06-19
   {
@@ -384,9 +354,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.NED,
     awayTeam: TEAMS.SWE,
-    date: "2026-06-19",
-    time: "15:00",
-    stadium: "Lincoln Financial Field",
+    datetime: new Date("2026-06-20T17:00:00Z"),
+    stadium: "NRG Stadium",
   },
   {
     id: 36,
@@ -394,9 +363,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.TUN,
     awayTeam: TEAMS.JPN,
-    date: "2026-06-19",
-    time: "18:00",
-    stadium: "MetLife Stadium",
+    datetime: new Date("2026-06-21T04:00:00Z"),
+    stadium: "Estadio BBVA",
   },
   // Group G — 2026-06-20
   {
@@ -405,9 +373,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.BEL,
     awayTeam: TEAMS.IRN,
-    date: "2026-06-20",
-    time: "15:00",
-    stadium: "Levi's Stadium",
+    datetime: new Date("2026-06-21T19:00:00Z"),
+    stadium: "SoFi Stadium",
   },
   {
     id: 38,
@@ -415,9 +382,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.NZL,
     awayTeam: TEAMS.EGY,
-    date: "2026-06-20",
-    time: "18:00",
-    stadium: "SoFi Stadium",
+    datetime: new Date("2026-06-22T01:00:00Z"),
+    stadium: "BC Place",
   },
   // Group H — 2026-06-20
   {
@@ -425,20 +391,18 @@ const GROUP_MATCHES: MatchType[] = [
     group: "H",
     round: "2",
     homeTeam: TEAMS.ESP,
-    awayTeam: TEAMS.URU,
-    date: "2026-06-20",
-    time: "15:00",
-    stadium: "Lumen Field",
+    awayTeam: TEAMS.KSA,
+    datetime: new Date("2026-06-21T16:00:00Z"),
+    stadium: "Mercedes-Benz Stadium",
   },
   {
     id: 40,
     group: "H",
     round: "2",
-    homeTeam: TEAMS.KSA,
+    homeTeam: TEAMS.URU,
     awayTeam: TEAMS.CPV,
-    date: "2026-06-20",
-    time: "18:00",
-    stadium: "Mercedes-Benz Stadium",
+    datetime: new Date("2026-06-21T22:00:00Z"),
+    stadium: "Hard Rock Stadium",
   },
   // Group I — 2026-06-21
   {
@@ -447,9 +411,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.FRA,
     awayTeam: TEAMS.IRQ,
-    date: "2026-06-21",
-    time: "15:00",
-    stadium: "BMO Field",
+    datetime: new Date("2026-06-22T21:00:00Z"),
+    stadium: "Lincoln Financial Field",
   },
   {
     id: 42,
@@ -457,9 +420,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.NOR,
     awayTeam: TEAMS.SEN,
-    date: "2026-06-21",
-    time: "18:00",
-    stadium: "Gillette Stadium",
+    datetime: new Date("2026-06-23T00:00:00Z"),
+    stadium: "MetLife Stadium",
   },
   // Group J — 2026-06-21
   {
@@ -468,9 +430,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.ARG,
     awayTeam: TEAMS.AUT,
-    date: "2026-06-21",
-    time: "15:00",
-    stadium: "BC Place",
+    datetime: new Date("2026-06-22T17:00:00Z"),
+    stadium: "AT&T Stadium",
   },
   {
     id: 44,
@@ -478,9 +439,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.JOR,
     awayTeam: TEAMS.ALG,
-    date: "2026-06-21",
-    time: "18:00",
-    stadium: "AT&T Stadium",
+    datetime: new Date("2026-06-23T03:00:00Z"),
+    stadium: "Levi's Stadium",
   },
   // Group K — 2026-06-22
   {
@@ -489,9 +449,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.POR,
     awayTeam: TEAMS.UZB,
-    date: "2026-06-22",
-    time: "15:00",
-    stadium: "Estadio AKRON",
+    datetime: new Date("2026-06-23T17:00:00Z"),
+    stadium: "NRG Stadium",
   },
   {
     id: 46,
@@ -499,9 +458,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.COL,
     awayTeam: TEAMS.COD,
-    date: "2026-06-22",
-    time: "18:00",
-    stadium: "NRG Stadium",
+    datetime: new Date("2026-06-24T02:00:00Z"),
+    stadium: "Estadio AKRON",
   },
   // Group L — 2026-06-22
   {
@@ -510,9 +468,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.ENG,
     awayTeam: TEAMS.GHA,
-    date: "2026-06-22",
-    time: "15:00",
-    stadium: "Estadio BBVA",
+    datetime: new Date("2026-06-23T20:00:00Z"),
+    stadium: "Gillette Stadium",
   },
   {
     id: 48,
@@ -520,32 +477,30 @@ const GROUP_MATCHES: MatchType[] = [
     round: "2",
     homeTeam: TEAMS.PAN,
     awayTeam: TEAMS.CRO,
-    date: "2026-06-22",
-    time: "18:00",
-    stadium: "Arrowhead Stadium",
+    datetime: new Date("2026-06-23T23:00:00Z"),
+    stadium: "BMO Field",
   },
 
   // ── ROUND 3 (simultaneous per group) ────────────────────────────────────────
   // Group A — 2026-06-23
+
   {
     id: 49,
     group: "A",
     round: "3",
-    homeTeam: TEAMS.CZE,
-    awayTeam: TEAMS.MEX,
-    date: "2026-06-23",
-    time: "21:00",
-    stadium: "SoFi Stadium",
+    homeTeam: TEAMS.RSA,
+    awayTeam: TEAMS.KOR,
+    datetime: new Date("2026-06-25T01:00:00Z"),
+    stadium: "Estadio BBVA",
   },
   {
     id: 50,
     group: "A",
     round: "3",
-    homeTeam: TEAMS.RSA,
-    awayTeam: TEAMS.KOR,
-    date: "2026-06-23",
-    time: "21:00",
-    stadium: "Levi's Stadium",
+    homeTeam: TEAMS.CZE,
+    awayTeam: TEAMS.MEX,
+    datetime: new Date("2026-06-25T01:00:00Z"),
+    stadium: "Estadio Azteca",
   },
   // Group B — 2026-06-23
   {
@@ -554,9 +509,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "3",
     homeTeam: TEAMS.SUI,
     awayTeam: TEAMS.CAN,
-    date: "2026-06-23",
-    time: "21:00",
-    stadium: "Mercedes-Benz Stadium",
+    datetime: new Date("2026-06-24T19:00:00Z"),
+    stadium: "BC Place",
   },
   {
     id: 52,
@@ -564,30 +518,28 @@ const GROUP_MATCHES: MatchType[] = [
     round: "3",
     homeTeam: TEAMS.BIH,
     awayTeam: TEAMS.QAT,
-    date: "2026-06-23",
-    time: "21:00",
+    datetime: new Date("2026-06-24T19:00:00Z"),
     stadium: "Lumen Field",
   },
   // Group C — 2026-06-23
+
   {
     id: 53,
     group: "C",
     round: "3",
-    homeTeam: TEAMS.SCO,
-    awayTeam: TEAMS.BRA,
-    date: "2026-06-23",
-    time: "21:00",
-    stadium: "Gillette Stadium",
+    homeTeam: TEAMS.MAR,
+    awayTeam: TEAMS.HAI,
+    datetime: new Date("2026-06-24T22:00:00Z"),
+    stadium: "Mercedes-Benz Stadium",
   },
   {
     id: 54,
     group: "C",
     round: "3",
-    homeTeam: TEAMS.MAR,
-    awayTeam: TEAMS.HAI,
-    date: "2026-06-23",
-    time: "21:00",
-    stadium: "BMO Field",
+    homeTeam: TEAMS.SCO,
+    awayTeam: TEAMS.BRA,
+    datetime: new Date("2026-06-24T22:00:00Z"),
+    stadium: "Hard Rock Stadium",
   },
   // Group D — 2026-06-24
   {
@@ -596,9 +548,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "3",
     homeTeam: TEAMS.TUR,
     awayTeam: TEAMS.USA,
-    date: "2026-06-24",
-    time: "21:00",
-    stadium: "AT&T Stadium",
+    datetime: new Date("2026-06-26T02:00:00Z"),
+    stadium: "SoFi Stadium",
   },
   {
     id: 56,
@@ -606,9 +557,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "3",
     homeTeam: TEAMS.PAR,
     awayTeam: TEAMS.AUS,
-    date: "2026-06-24",
-    time: "21:00",
-    stadium: "BC Place",
+    datetime: new Date("2026-06-26T02:00:00Z"),
+    stadium: "Levi's Stadium",
   },
   // Group E — 2026-06-24
   {
@@ -617,9 +567,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "3",
     homeTeam: TEAMS.ECU,
     awayTeam: TEAMS.GER,
-    date: "2026-06-24",
-    time: "21:00",
-    stadium: "NRG Stadium",
+    datetime: new Date("2026-06-25T20:00:00Z"),
+    stadium: "MetLife Stadium",
   },
   {
     id: 58,
@@ -627,9 +576,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "3",
     homeTeam: TEAMS.CUW,
     awayTeam: TEAMS.CIV,
-    date: "2026-06-24",
-    time: "21:00",
-    stadium: "Estadio AKRON",
+    datetime: new Date("2026-06-25T20:00:00Z"),
+    stadium: "Lincoln Financial Field",
   },
   // Group F — 2026-06-25
   {
@@ -638,8 +586,7 @@ const GROUP_MATCHES: MatchType[] = [
     round: "3",
     homeTeam: TEAMS.TUN,
     awayTeam: TEAMS.NED,
-    date: "2026-06-25",
-    time: "21:00",
+    datetime: new Date("2026-06-25T23:00:00Z"),
     stadium: "Arrowhead Stadium",
   },
   {
@@ -648,73 +595,69 @@ const GROUP_MATCHES: MatchType[] = [
     round: "3",
     homeTeam: TEAMS.JPN,
     awayTeam: TEAMS.SWE,
-    date: "2026-06-25",
-    time: "21:00",
-    stadium: "Estadio BBVA",
+    datetime: new Date("2026-06-25T23:00:00Z"),
+    stadium: "AT&T Stadium",
   },
   // Group G — 2026-06-25
+
   {
     id: 61,
     group: "G",
     round: "3",
-    homeTeam: TEAMS.NZL,
-    awayTeam: TEAMS.BEL,
-    date: "2026-06-25",
-    time: "21:00",
-    stadium: "Hard Rock Stadium",
+    homeTeam: TEAMS.EGY,
+    awayTeam: TEAMS.IRN,
+    datetime: new Date("2026-06-27T03:00:00Z"),
+    stadium: "Lumen Field",
   },
   {
     id: 62,
     group: "G",
     round: "3",
-    homeTeam: TEAMS.EGY,
-    awayTeam: TEAMS.IRN,
-    date: "2026-06-25",
-    time: "21:00",
-    stadium: "Estadio Azteca",
+    homeTeam: TEAMS.NZL,
+    awayTeam: TEAMS.BEL,
+    datetime: new Date("2026-06-27T03:00:00Z"),
+    stadium: "BC Place",
   },
   // Group H — 2026-06-25
   {
     id: 63,
     group: "H",
     round: "3",
-    homeTeam: TEAMS.KSA,
-    awayTeam: TEAMS.ESP,
-    date: "2026-06-25",
-    time: "21:00",
-    stadium: "Lincoln Financial Field",
+    homeTeam: TEAMS.CPV,
+    awayTeam: TEAMS.KSA,
+    datetime: new Date("2026-06-27T00:00:00Z"),
+    stadium: "NRG Stadium",
   },
   {
     id: 64,
     group: "H",
     round: "3",
-    homeTeam: TEAMS.CPV,
-    awayTeam: TEAMS.URU,
-    date: "2026-06-25",
-    time: "21:00",
-    stadium: "MetLife Stadium",
+    homeTeam: TEAMS.URU,
+    awayTeam: TEAMS.ESP,
+    datetime: new Date("2026-06-27T00:00:00Z"),
+    stadium: "Estadio AKRON",
   },
+
   // Group I — 2026-06-26
   {
     id: 65,
     group: "I",
     round: "3",
-    homeTeam: TEAMS.NOR,
-    awayTeam: TEAMS.FRA,
-    date: "2026-06-26",
-    time: "21:00",
-    stadium: "Levi's Stadium",
+    homeTeam: TEAMS.SEN,
+    awayTeam: TEAMS.IRQ,
+    datetime: new Date("2026-06-26T19:00:00Z"),
+    stadium: "BMO Field",
   },
   {
     id: 66,
     group: "I",
     round: "3",
-    homeTeam: TEAMS.SEN,
-    awayTeam: TEAMS.IRQ,
-    date: "2026-06-26",
-    time: "21:00",
-    stadium: "SoFi Stadium",
+    homeTeam: TEAMS.NOR,
+    awayTeam: TEAMS.FRA,
+    datetime: new Date("2026-06-26T19:00:00Z"),
+    stadium: "Gillette Stadium",
   },
+
   // Group J — 2026-06-26
   {
     id: 67,
@@ -722,9 +665,8 @@ const GROUP_MATCHES: MatchType[] = [
     round: "3",
     homeTeam: TEAMS.JOR,
     awayTeam: TEAMS.ARG,
-    date: "2026-06-26",
-    time: "21:00",
-    stadium: "Lumen Field",
+    datetime: new Date("2026-06-28T02:00:00Z"),
+    stadium: "AT&T Stadium",
   },
   {
     id: 68,
@@ -732,53 +674,50 @@ const GROUP_MATCHES: MatchType[] = [
     round: "3",
     homeTeam: TEAMS.ALG,
     awayTeam: TEAMS.AUT,
-    date: "2026-06-26",
-    time: "21:00",
-    stadium: "Mercedes-Benz Stadium",
+    datetime: new Date("2026-06-28T02:00:00Z"),
+    stadium: "Arrowhead Stadium",
   },
   // Group K — 2026-06-27
+
   {
     id: 69,
     group: "K",
     round: "3",
-    homeTeam: TEAMS.COL,
-    awayTeam: TEAMS.POR,
-    date: "2026-06-27",
-    time: "21:00",
-    stadium: "BMO Field",
+    homeTeam: TEAMS.COD,
+    awayTeam: TEAMS.UZB,
+    datetime: new Date("2026-06-27T23:30:00Z"),
+    stadium: "Mercedes-Benz Stadium",
   },
   {
     id: 70,
     group: "K",
     round: "3",
-    homeTeam: TEAMS.COD,
-    awayTeam: TEAMS.UZB,
-    date: "2026-06-27",
-    time: "21:00",
-    stadium: "Gillette Stadium",
+    homeTeam: TEAMS.COL,
+    awayTeam: TEAMS.POR,
+    datetime: new Date("2026-06-27T23:30:00Z"),
+    stadium: "Hard Rock Stadium",
   },
   // Group L — 2026-06-27
   {
     id: 71,
     group: "L",
     round: "3",
-    homeTeam: TEAMS.PAN,
-    awayTeam: TEAMS.ENG,
-    date: "2026-06-27",
-    time: "21:00",
-    stadium: "BC Place",
+    homeTeam: TEAMS.CRO,
+    awayTeam: TEAMS.GHA,
+    datetime: new Date("2026-06-27T21:00:00Z"),
+    stadium: "Lincoln Financial Field",
   },
   {
     id: 72,
     group: "L",
     round: "3",
-    homeTeam: TEAMS.CRO,
-    awayTeam: TEAMS.GHA,
-    date: "2026-06-27",
-    time: "21:00",
-    stadium: "AT&T Stadium",
+    homeTeam: TEAMS.PAN,
+    awayTeam: TEAMS.ENG,
+    datetime: new Date("2026-06-27T21:00:00Z"),
+    stadium: "MetLife Stadium",
   },
 ];
 
 export default GROUP_MATCHES;
+export { ROUNDS, GROUPS };
 export type { MatchType };

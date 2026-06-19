@@ -1,25 +1,16 @@
 import AppBar from "@/components/appBar";
 import NavitationTab from "@/components/navigationTab";
 import MaxWidth from "@/components/maxWidth";
-import CardData from "./cardData";
-import { auth } from "@/server/auth";
+import CardMatchResults from "./cardMatchResults";
 
-export default async function GuessesPage() {
-  const session = await auth();
-
+export default async function ResultsPage() {
   return (
     <div className="flex flex-col items-center justify-center w-full">
-      <AppBar
-        exitButton={true}
-        fromPage={"/guesses"}
-        resultsButton={session?.user.role === "ADMIN"}
-      />
+      <AppBar goBack={true} exitButton={true} />
       <MaxWidth>
         <div className="pt-30 flex flex-col h-screen w-full gap-10">
           <NavitationTab />
-          {/* <CountPoints/> */}
-          <CardData />
-          {/* <CardMatches /> */}
+          <CardMatchResults />
         </div>
       </MaxWidth>
     </div>

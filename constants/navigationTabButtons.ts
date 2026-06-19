@@ -21,12 +21,6 @@ const NAVIGATION_TAB_BUTTONS: NavigationTabButtons[] = [
     pathname: "/",
     svgIcon: RankingSVG,
   },
-  {
-    label: "",
-    className: "",
-    pathname: "",
-    svgIcon: RankingSVG,
-  },
 ];
 
 export default NAVIGATION_TAB_BUTTONS;

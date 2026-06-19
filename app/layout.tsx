@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 
 import { SessionProvider } from "next-auth/react";
 import Providers from "./providers";
+import { Toaster } from "react-hot-toast";
 
 export default function RootLayout({
   children,
@@ -35,6 +36,7 @@ export default function RootLayout({
         {/* <div className="min-h-full flex flex-col bg-[#09090b]"> */}
         <Providers>{children}</Providers>
         {/* </div> */}
+        <Toaster />
       </body>
     </html>
   );
