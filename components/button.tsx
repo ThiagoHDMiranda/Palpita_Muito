@@ -12,11 +12,12 @@ export default function Button({
   onClick,
 }: ButtonProps) {
   const buttonColors = {
-    green: "bg-green-900",
-    red: "bg-red-800",
+    green: "bg-green-900 shadow-xs hover:shadow-md shadow-white/30 ",
+    red: "bg-red-800 shadow-xs hover:shadow-md shadow-white/30",
     blue: "text-blue-600 border-blue-600 bg-white",
-    white: "text-white border-white",
-    gray: "bg-gray-500",
+    white:
+      "text-gray-300 border-gray-300 shadow-xs hover:shadow-md shadow-white/30",
+    gray: "bg-gray-500 shadow-xs hover:shadow-md shadow-white/30",
     custom: "",
   };
 

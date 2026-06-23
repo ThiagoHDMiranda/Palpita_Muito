@@ -28,15 +28,15 @@ export default function Standings({
   groupTeams.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col w-full max-w-111 sm:max-w-117 overflow-x-auto overflow-y-hidden self-center gap-4 bg-gray-300 rounded-xl mb-10 p-2 pt-4 scrollbar-thumb-(--secondary)">
       <div className="w-full flex justify-center gap-3 text-sm">
         <Button
           className={`${
             isMyStandings
-              ? "bg-(--secondary) border-(--primary)/50 text-(--primary)"
-              : "bg-gray-500 border-gray-500 text-(--secondary)"
+              ? "bg-(--secondary) border-(--secondary) text-gray-300 shadow-green-800/80"
+              : "bg-gray-500 border-gray-500 text-(--secondary) shadow-gray-500/80"
           }
-           duration-200`}
+           duration-200 shadow-xs hover:shadow-md`}
           color="custom"
           onClick={() => setIsMyStandings(true)}
         >
@@ -45,23 +45,23 @@ export default function Standings({
         <div
           className={`flex items-center justify-center duration-200 ${isMyStandings ? "rotate-90" : "-rotate-90"}`}
         >
-          <DownArrow color="var(--color-gray-300)" />
+          <DownArrow color="var(--secondary)" />
         </div>
         <Button
           className={`${
             !isMyStandings
-              ? "bg-(--secondary) border-(--primary)/50 text-(--primary)"
-              : "bg-gray-500 border-gray-500 text-(--secondary)"
+              ? "bg-(--secondary) border-(--secondary) text-gray-300 shadow-green-800/80"
+              : "bg-gray-500 border-gray-500 text-(--secondary) shadow-gray-500/80"
           }
-           duration-200`}
+           duration-200 shadow-xs hover:shadow-md`}
           color="custom"
           onClick={() => setIsMyStandings(false)}
         >
           Resultados reais
         </Button>
       </div>
-      <div className="w-full max-w-111 sm:max-w-115 self-center flex overflow-x-auto overflow-y-hidden mb-10">
-        <table className="w-fit flex flex-col gap-1 bg-white text-(--secondary) p-2 pt-4 rounded-t-2xl sm:gap-2 sm:p-4 sm:pt-6 sm:text-lg">
+      <div className="w-full flex ">
+        <table className="w-fit flex flex-col gap-1 text-(--secondary) pt-4 rounded-t-2xl sm:gap-2 sm:p-4 sm:pt-6 sm:text-lg">
           <thead>
             <tr className="flex gap-1">
               <th className="w-27 text-start">GRUPO {group}</th>

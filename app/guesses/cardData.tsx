@@ -82,16 +82,18 @@ export default function CardData() {
         />
       </div>
       {roundChosen === 0 && (
-        <div className="flex flex-col gap-5">
-          <ChooseGroup groupChosen={groupChosen} changeGroup={changeGroup} />
-          <ChooseRound
-            roundGroupChosen={roundGroupChosen}
-            changeRound={changeRound}
-          />
-          <CardMatches
-            groupChosen={groupChosen}
-            roundGroupChosen={roundGroupChosen}
-          />
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-2">
+            <ChooseGroup groupChosen={groupChosen} changeGroup={changeGroup} />
+            <ChooseRound
+              roundGroupChosen={roundGroupChosen}
+              changeRound={changeRound}
+            />
+            <CardMatches
+              groupChosen={groupChosen}
+              roundGroupChosen={roundGroupChosen}
+            />
+          </div>
           <Standings group={groupChosen} />
         </div>
       )}

@@ -1,5 +1,5 @@
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
-import { GuessType } from "./cardMatches";
+import { GuessType } from "../app/guesses/cardMatches";
 import { MatchType } from "@/constants/matches";
 
 interface MatchProps {
@@ -42,7 +42,7 @@ export default function Match({
         <input
           className={`flex items-center justify-center w-6 h-6 shrink-0 
                     ${isEditing && "border-2 border-neutral-500 bg-neutral-50/50"} rounded-md 
-                    ${isEditing ? "text-(--secondary)" : "text-white"} text-center text-sm font-bold outline-none focus:outline-none`}
+                    ${isEditing ? "text-(--secondary)" : "text-gray-300"} text-center text-sm font-bold outline-none focus:outline-none`}
           value={currentGuess.homeGoals}
           readOnly={!isEditing}
           type="text"
@@ -58,7 +58,7 @@ export default function Match({
         <input
           className={`flex items-center justify-center w-6 h-6 shrink-0 
                   ${isEditing && "border-2 border-neutral-500 bg-neutral-50/50"} rounded-md 
-                  ${isEditing ? "text-(--secondary)" : "text-white"} text-center text-sm font-bold outline-none focus:outline-none`}
+                  ${isEditing ? "text-(--secondary)" : "text-gray-300"} text-center text-sm font-bold outline-none focus:outline-none`}
           value={currentGuess.awayGoals}
           readOnly={!isEditing}
           type="text"

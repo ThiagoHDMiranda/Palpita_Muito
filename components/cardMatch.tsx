@@ -5,7 +5,7 @@ import AcceptSVG from "@/public/acceptIcon";
 import CloseSVG from "@/public/closeIcon";
 import EditSVG from "@/public/editIcon";
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
-import { GuessType } from "./cardMatches";
+import { GuessType } from "../app/guesses/cardMatches";
 import { setGuess } from "@/server/actions/guess.action";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
@@ -129,13 +129,13 @@ export default function CardMatch({
   return (
     <div
       key={match.id}
-      className="relative flex flex-col items-center justify-center p-3 shadow-xs shadow-amber-100/20 border border-(--primary)/50 rounded-xl"
+      className="relative flex flex-col items-center justify-center p-3 shadow-xs shadow-amber-100/20 border border-(--primary-60) rounded-xl"
     >
       <div className="w-full flex items-center justify-between">
         <span>Rodada {match.round}</span>
         <span className="self-end">Grupo {match.group}</span>
       </div>
-      <div className="text-sm text-(--primary) font-bold">
+      <div className="text-sm text-(--primary-60) font-bold">
         {match.datetime
           .toLocaleTimeString("pt-BR", {
             day: "2-digit",

@@ -1,6 +1,6 @@
 import GROUP_MATCHES, { GROUPS } from "@/constants/matches";
 import { useState } from "react";
-import CardMatch from "./cardMatch";
+import CardMatch from "../../components/cardMatch";
 import { RoundGroupChosenType } from "./cardData";
 
 export type GuessType = {

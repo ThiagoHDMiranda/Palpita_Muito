@@ -42,25 +42,25 @@ export default function Dropdown({
   }, [isOpen]);
   return (
     <div className="w-full justify-center flex gap-2">
-      <span className="flex text-(--primary)/70 py-1 font-bold">{label}</span>
+      <span className="flex text-gray-300 py-1 font-bold">{label}</span>
       <div
         className="relative flex flex-col gap-1 text-(--secondary) w-60"
         ref={dropdownRef}
       >
         <span
-          className="flex items-center justify-between w-full cursor-pointer px-2 py-1 rounded-md font-bold bg-(--primary)/60 text-gray-100"
+          className="flex items-center justify-between w-full cursor-pointer px-2 py-1 rounded-md font-bold bg-gray-300 text-(--secondary) shadow-xs shadow-white/30"
           onClick={() => setIsOpen(!isOpen)}
         >
           {list[chosen]}
-          <DownArrow color="var(--color-gray-100)" />
+          <DownArrow color="var(--secondary)" />
         </span>
         <div
-          className={`absolute w-full flex flex-col bg-gray-300 text-[14px] rounded-md gap-1 p-1 transition-all duration-200 ${isOpen ? "opacity-100 z-10 translate-y-9" : "opacity-0 -z-10"}`}
+          className={`absolute w-full flex flex-col bg-gray-300 border border-(--secondary)/60 shadow-xs shadow-green-800/80  text-[14px] rounded-md gap-1 p-1 transition-all duration-200 ${isOpen ? "opacity-100 z-10 translate-y-9" : "opacity-0 -z-10"}`}
         >
           {list.map((item, index) => (
             <div
               key={item}
-              className={`cursor-pointer text-nowrap p-1 rounded-md hover:bg-(--primary)/60 ${index === chosen && "font-bold bg-gray-300"}`}
+              className={`cursor-pointer text-nowrap p-1 rounded-md hover:bg-(--secondary)/40 ${index === chosen && "font-bold bg-gray-400"}`}
               onClick={() => chooseItem(index)}
             >
               {item}

@@ -15,7 +15,7 @@ export default function ChooseGroup({
   changeGroup,
 }: ChooseGroupProps) {
   return (
-    <div className="w-full flex justify-between text-gray-300 font-bold">
+    <div className="w-full flex items-center justify-between bg-gray-300 rounded-2xl text-(--secondary) font-bold">
       <Button
         className={`${GROUPS.indexOf(groupChosen) === 0 && "cursor-default! hover:translate-none"} w-fit rotate-90 border-none`}
         color="custom"
@@ -25,7 +25,7 @@ export default function ChooseGroup({
           color={
             GROUPS.indexOf(groupChosen) === 0
               ? "var(--color-gray-500)"
-              : "var(--color-gray-300)"
+              : "var(--secondary)"
           }
         />
       </Button>
@@ -39,7 +39,7 @@ export default function ChooseGroup({
           color={
             GROUPS.indexOf(groupChosen) === GROUPS.length - 1
               ? "var(--color-gray-500)"
-              : "var(--color-gray-300)"
+              : "var(--secondary)"
           }
         />
       </Button>

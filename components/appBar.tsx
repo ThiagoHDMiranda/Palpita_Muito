@@ -3,6 +3,7 @@
 import { signOut } from "next-auth/react";
 import Button from "./button";
 import { redirect, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 interface AppBarProps {
   exitButton?: boolean;
@@ -17,14 +18,11 @@ export default function AppBar({
   fromPage = "/",
   resultsButton = false,
 }: AppBarProps) {
-  const param = useSearchParams();
-  const from = param.get("from");
-
   return (
     <div
       className={`fixed top-0 left-0 w-full h-22 z-50
     flex items-center justify-center overflow-hidden
-    shadow-xs shadow-amber-100/20 border-b border-(--primary)/10
+    shadow-xs shadow-amber-100/20 border-b border-(--secondary)/10
     bg-[rgb(11 63 34 / 80%)] backdrop-blur-sm`}
     >
       <div
@@ -42,6 +40,29 @@ export default function AppBar({
           alt="Palpita Muito logo"
         />
       </div>
+      <Suspense>
+        <AppBarButtons
+          exitButton={exitButton}
+          goBack={goBack}
+          fromPage={fromPage}
+          resultsButton={resultsButton}
+        />
+      </Suspense>
+    </div>
+  );
+}
+
+function AppBarButtons({
+  exitButton = false,
+  goBack = false,
+  fromPage = "/",
+  resultsButton = false,
+}: AppBarProps) {
+  const param = useSearchParams();
+  const from = param.get("from");
+
+  return (
+    <div className="flex items-center justify-center">
       {goBack && (
         <div className="absolute left-5 lg:left-15">
           <Button
@@ -59,7 +80,7 @@ export default function AppBar({
       {resultsButton && (
         <div className="absolute left-5 lg:left-15">
           <Button
-            className="bg-(--primary) text-(--secondary)"
+            className="bg-gray-300 text-(--secondary) border border-gray-300 shadow-xs hover:shadow-md shadow-white/30"
             children="Resultados"
             color="custom"
             onClick={() => redirect(`/results?from=${fromPage}`)}

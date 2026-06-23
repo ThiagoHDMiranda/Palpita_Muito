@@ -15,7 +15,7 @@ export default async function GuessesPage() {
         resultsButton={session?.user.role === "ADMIN"}
       />
       <MaxWidth>
-        <div className="pt-30 flex flex-col h-screen w-full gap-10">
+        <div className="pt-30 flex flex-col h-screen w-full">
           <NavitationTab />
           {/* <CountPoints/> */}
           <CardData />
