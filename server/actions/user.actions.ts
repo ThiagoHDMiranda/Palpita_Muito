@@ -3,7 +3,7 @@
 import { ActionResult } from "@/types/actionResult";
 import { createUser, findByEmail } from "../repositories/user.repositories";
 
-type UserType = {
+export type UserType = {
   name: string | null;
   id: string;
   email: string;

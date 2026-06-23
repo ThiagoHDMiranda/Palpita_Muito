@@ -8,9 +8,10 @@ import {
   newMatchResult,
   updateMatchResult,
 } from "../repositories/matchResult.repositories";
-import { findByEmail, findById } from "../repositories/user.repositories";
+import { findById } from "../repositories/user.repositories";
+import { UserType } from "./user.actions";
 
-type MatchResultType = {
+export type MatchResultType = {
   matchId: number;
   homeGoals: number;
   awayGoals: number;
@@ -21,7 +22,7 @@ export async function getAllMatchResultsActions(): Promise<
   ActionResult<MatchResultType[]>
 > {
   try {
-    const result = await getAllMatchResultsRepository();
+    const result: MatchResultType[] = await getAllMatchResultsRepository();
     return { success: true, data: result };
   } catch (err) {
     return { success: false, message: "Erro no servidor" };
@@ -37,7 +38,7 @@ export async function setMatchResult(
     const session = await auth();
     if (!session) return { success: false, message: "Não autorizado" };
 
-    const user = await findById(session.user.userId);
+    const user: UserType | null = await findById(session.user.userId);
 
     if (!user || user.role !== "ADMIN") {
       return { success: false, message: "Não autorizado" };

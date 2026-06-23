@@ -10,6 +10,14 @@ import {
 import { auth } from "../auth";
 import { ActionResult } from "../../types/actionResult";
 
+// export type GuessDBType = {
+//   homeGoals: number;
+//   awayGoals: number;
+//   matchId: number;
+//   createdAt: Date;
+//   userId: string;
+//   updatedAt: Date;
+// };
 export type GuessDBType = {
   homeGoals: number;
   awayGoals: number;
