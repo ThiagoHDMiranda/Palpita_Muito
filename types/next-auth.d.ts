@@ -5,18 +5,13 @@ declare module "next-auth" {
     userId: string;
     role: "ADMIN" | "USER";
   }
-}
 
-declare module "next-auth" {
   interface Session {
     user: {
       id: string;
       userId: string;
       role: "ADMIN" | "USER";
-      name?: string;
-      email?: string;
-      image?: string;
-    };
+    } & DefaultSession["user"];
   }
 }
 

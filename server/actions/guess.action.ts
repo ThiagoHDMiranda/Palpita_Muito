@@ -10,7 +10,7 @@ import {
 import { auth } from "../auth";
 import { ActionResult } from "../../types/actionResult";
 
-type GuessType = {
+export type GuessDBType = {
   homeGoals: number;
   awayGoals: number;
   matchId: number;
@@ -19,7 +19,9 @@ type GuessType = {
   updatedAt: Date;
 };
 
-export async function getGuessesActions(): Promise<ActionResult<GuessType[]>> {
+export async function getGuessesActions(): Promise<
+  ActionResult<GuessDBType[]>
+> {
   try {
     const session = await auth();
     if (!session) return { success: false, message: "Não autorizado" };
@@ -35,7 +37,7 @@ export async function setGuess(
   matchId: number,
   homeGoals: number,
   awayGoals: number,
-): Promise<ActionResult<GuessType>> {
+): Promise<ActionResult<GuessDBType>> {
   try {
     const session = await auth();
     if (!session) return { success: false, message: "Não autorizado" };
