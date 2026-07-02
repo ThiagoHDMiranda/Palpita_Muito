@@ -1,25 +1,32 @@
+import GuessSVG from "@/public/guessIcon";
 import RankingSVG from "@/public/rankingIcon";
 import ResultsSVG from "@/public/resultsIcon";
 
 type NavigationTabButtons = {
   label: string;
-  className: string;
   pathname: string;
   svgIcon: React.ComponentType<{ color: string; size: number }>;
+  iconClassName: string;
 };
 
 const NAVIGATION_TAB_BUTTONS: NavigationTabButtons[] = [
   {
     label: "Palpites",
-    className: "",
     pathname: "/guesses",
+    svgIcon: GuessSVG,
+    iconClassName: "relative -translate-y-0.5",
+  },
+  {
+    label: "Resultados",
+    pathname: "/results",
     svgIcon: ResultsSVG,
+    iconClassName: "relative -translate-y-0.5",
   },
   {
     label: "Ranking",
-    className: "relative -translate-y-0.5",
     pathname: "/",
     svgIcon: RankingSVG,
+    iconClassName: "relative -translate-y-0.5",
   },
 ];
 

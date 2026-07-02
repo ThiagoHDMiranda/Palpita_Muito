@@ -1,10 +1,20 @@
 import { prisma } from "@/lib/prisma";
-import { GuessDBType } from "../actions/guess.action";
+import { GuessDBType } from "@/types/match";
 
-export async function getGuessesRepository(
+export async function getGuessesByUserRepository(
   userId: string,
 ): Promise<GuessDBType[]> {
   return await prisma.guess.findMany({ where: { userId } });
+}
+
+export async function getGuessesByMatchIdRepository(
+  matchId: number,
+): Promise<GuessDBType[]> {
+  return await prisma.guess.findMany({ where: { matchId } });
+}
+
+export async function getAllGuessesRepository(): Promise<GuessDBType[]> {
+  return await prisma.guess.findMany();
 }
 
 export async function findGuess(
@@ -21,10 +31,11 @@ export async function updateGuess(
   matchId: number,
   homeGoals: number,
   awayGoals: number,
+  points: number,
 ): Promise<GuessDBType> {
   return await prisma.guess.update({
     where: { userId_matchId: { userId, matchId } },
-    data: { homeGoals, awayGoals },
+    data: { homeGoals, awayGoals, points },
   });
 }
 
@@ -33,8 +44,9 @@ export async function newGuess(
   matchId: number,
   homeGoals: number,
   awayGoals: number,
+  points: number,
 ): Promise<GuessDBType> {
   return await prisma.guess.create({
-    data: { userId, matchId, homeGoals, awayGoals },
+    data: { userId, matchId, homeGoals, awayGoals, points },
   });
 }

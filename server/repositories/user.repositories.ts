@@ -1,10 +1,16 @@
 import { prisma } from "@/lib/prisma";
 import { UserType } from "../actions/user.actions";
 
+export async function getAllUsersRepository(): Promise<UserType[] | null> {
+  return await prisma.user.findMany();
+}
+
 export async function findById(id: string): Promise<UserType | null> {
-  return await prisma.user.findUnique({
+  const result = await prisma.user.findUnique({
     where: { id },
   });
+
+  return result;
 }
 
 export async function findByEmail(email: string): Promise<UserType | null> {

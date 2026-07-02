@@ -31,6 +31,7 @@ model Guess {
   homeGoals Int
   awayGoals Int
 
+  points Int @default(0)
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -43,6 +44,11 @@ model MatchResult {
 
   homeGoals Int
   awayGoals Int
+  extraTime Boolean @default(false)
+  homeETGoals Int? 
+  awayETGoals Int? 
+  homePenalties Int? 
+  awayPenalties Int? 
 
   updatedAt DateTime @updatedAt
 }

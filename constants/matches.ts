@@ -18,7 +18,7 @@ type MatchType = {
   // awayPenalties?: number; // Only for knockouts
 };
 
-const GROUP_MATCHES: MatchType[] = [
+const MATCHES: MatchType[] = [
   // ── ROUND 1 ─────────────────────────────────────────────────────────────────
   // Group A — 2026-06-11
   {
@@ -718,6 +718,6 @@ const GROUP_MATCHES: MatchType[] = [
   },
 ];
 
-export default GROUP_MATCHES;
+export default MATCHES;
 export { ROUNDS, GROUPS };
 export type { MatchType };

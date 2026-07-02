@@ -31,13 +31,13 @@ export default function ChooseGroup({
       </Button>
       <div>GRUPO {groupChosen}</div>
       <Button
-        className={`${GROUPS.indexOf(groupChosen) === GROUPS.length - 1 && "cursor-default! hover:translate-none"} w-fit -rotate-90 border-none`}
+        className={`${GROUPS.indexOf(groupChosen) === GROUPS.length - 2 && "cursor-default! hover:translate-none"} w-fit -rotate-90 border-none`}
         color="custom"
         onClick={() => changeGroup(groupChosen, "next")}
       >
         <DownArrow
           color={
-            GROUPS.indexOf(groupChosen) === GROUPS.length - 1
+            GROUPS.indexOf(groupChosen) === GROUPS.length - 2
               ? "var(--color-gray-500)"
               : "var(--secondary)"
           }

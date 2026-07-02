@@ -1,6 +1,7 @@
 "use client";
 
 import AppBar from "@/components/appBar";
+import Loading from "@/components/loading";
 import { signIn, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
@@ -15,7 +16,7 @@ export default function LoginPage() {
     <div className="h-dvh flex flex-col items-center justify-center">
       <AppBar exitButton={false} />
       {status === "loading" ? (
-        <div>Loading...</div>
+        <Loading />
       ) : (
         <div className="flex flex-col items-center justify-center gap-10">
           <div

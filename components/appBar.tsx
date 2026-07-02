@@ -2,8 +2,9 @@
 
 import { signOut } from "next-auth/react";
 import Button from "./button";
-import { redirect, useSearchParams } from "next/navigation";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 interface AppBarProps {
   exitButton?: boolean;
@@ -18,16 +19,17 @@ export default function AppBar({
   fromPage = "/",
   resultsButton = false,
 }: AppBarProps) {
+  const router = useRouter();
   return (
     <div
       className={`fixed top-0 left-0 w-full h-22 z-50
     flex items-center justify-center overflow-hidden
     shadow-xs shadow-amber-100/20 border-b border-(--secondary)/10
-    bg-[rgb(11 63 34 / 80%)] backdrop-blur-sm`}
+    bg-[rgb(11 63 34 / 80%)] backdrop-blur-lg`}
     >
       <div
         className="flex flex-col items-center justify-center cursor-pointer"
-        onClick={() => redirect("/")}
+        onClick={() => router.push("/")}
       >
         <img
           className="absolute w-30 translate-y-3"
@@ -42,6 +44,7 @@ export default function AppBar({
       </div>
       <Suspense>
         <AppBarButtons
+          router={router}
           exitButton={exitButton}
           goBack={goBack}
           fromPage={fromPage}
@@ -53,11 +56,12 @@ export default function AppBar({
 }
 
 function AppBarButtons({
+  router,
   exitButton = false,
   goBack = false,
   fromPage = "/",
   resultsButton = false,
-}: AppBarProps) {
+}: AppBarProps & { router: AppRouterInstance }) {
   const param = useSearchParams();
   const from = param.get("from");
 
@@ -68,7 +72,7 @@ function AppBarButtons({
           <Button
             children="Voltar"
             color="white"
-            onClick={() => redirect(from ?? "/")}
+            onClick={() => router.push(from ?? "/")}
           />
         </div>
       )}
@@ -77,16 +81,16 @@ function AppBarButtons({
           <Button children="Sair" color="white" onClick={() => signOut()} />
         </div>
       )}
-      {resultsButton && (
+      {/* {resultsButton && (
         <div className="absolute left-5 lg:left-15">
           <Button
             className="bg-gray-300 text-(--secondary) border border-gray-300 shadow-xs hover:shadow-md shadow-white/30"
             children="Resultados"
             color="custom"
-            onClick={() => redirect(`/results?from=${fromPage}`)}
+            onClick={() => router.push(`/results?from=${fromPage}`)}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 }

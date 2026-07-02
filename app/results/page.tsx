@@ -6,13 +6,15 @@ import CardMatchResults from "./cardMatchResults";
 export default async function ResultsPage() {
   return (
     <div className="flex flex-col items-center justify-center w-full">
-      <AppBar goBack={true} exitButton={true} />
-      <MaxWidth>
-        <div className="pt-30 flex flex-col h-screen w-full gap-10">
-          <NavitationTab />
-          <CardMatchResults />
-        </div>
-      </MaxWidth>
+      <AppBar exitButton={true} />
+      <div className="w-full flex flex-col items-center pt-25">
+        <NavitationTab />
+        <MaxWidth>
+          <div className="pt-5 flex flex-col">
+            <CardMatchResults />
+          </div>
+        </MaxWidth>
+      </div>
     </div>
   );
 }

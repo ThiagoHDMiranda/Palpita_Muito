@@ -3,48 +3,57 @@
 import GROUP_MATCHES from "@/constants/matches";
 import {
   findGuess,
-  getGuessesRepository,
+  getAllGuessesRepository,
+  getGuessesByMatchIdRepository,
+  getGuessesByUserRepository,
   newGuess,
   updateGuess,
 } from "../repositories/guess.repositories";
 import { auth } from "../auth";
 import { ActionResult } from "../../types/actionResult";
+import { GuessDBType } from "@/types/match";
 
-// export type GuessDBType = {
-//   homeGoals: number;
-//   awayGoals: number;
-//   matchId: number;
-//   createdAt: Date;
-//   userId: string;
-//   updatedAt: Date;
-// };
-export type GuessDBType = {
-  homeGoals: number;
-  awayGoals: number;
-  matchId: number;
-  createdAt: Date;
-  userId: string;
-  updatedAt: Date;
-};
-
-export async function getGuessesActions(): Promise<
+export async function getGuessesByUserActions(): Promise<
   ActionResult<GuessDBType[]>
 > {
   try {
     const session = await auth();
     if (!session) return { success: false, message: "Não autorizado" };
 
-    const result = await getGuessesRepository(session.user.userId);
+    const result = await getGuessesByUserRepository(session.user.userId);
     return { success: true, data: result };
   } catch (err) {
     return { success: false, message: "Erro no servidor" };
   }
 }
 
-export async function setGuess(
+export async function getGuessesByMatchIdActions(
+  matchId: number,
+): Promise<ActionResult<GuessDBType[]>> {
+  try {
+    const result = await getGuessesByMatchIdRepository(matchId);
+    return { success: true, data: result };
+  } catch (err) {
+    return { success: false, message: "Erro no servidor" };
+  }
+}
+
+export async function getAllGuessesActions(): Promise<
+  ActionResult<GuessDBType[]>
+> {
+  try {
+    const result = await getAllGuessesRepository();
+    return { success: true, data: result };
+  } catch (err) {
+    return { success: false, message: "Erro no servidor" };
+  }
+}
+
+export async function setGuessActions(
   matchId: number,
   homeGoals: number,
   awayGoals: number,
+  points: number,
 ): Promise<ActionResult<GuessDBType>> {
   try {
     const session = await auth();
@@ -63,6 +72,7 @@ export async function setGuess(
         matchId,
         homeGoals,
         awayGoals,
+        points,
       );
 
       return { success: true, data: result };
@@ -73,6 +83,7 @@ export async function setGuess(
       matchId,
       homeGoals,
       awayGoals,
+      points,
     );
     return { success: true, data: result };
   } catch (err) {

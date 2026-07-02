@@ -1,35 +1,47 @@
-import Button from "@/components/button";
-import GROUP_MATCHES, { MatchType } from "@/constants/matches";
+import { MatchType } from "@/constants/matches";
 import STADIUMS_INFO from "@/constants/stadiums";
-import AcceptSVG from "@/public/acceptIcon";
-import CloseSVG from "@/public/closeIcon";
-import EditSVG from "@/public/editIcon";
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
-import { GuessType } from "../app/guesses/cardMatches";
-import { setGuess } from "@/server/actions/guess.action";
-import { useSession } from "next-auth/react";
-import toast from "react-hot-toast";
+import {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from "react";
 import Match from "./match";
+import { GuessType, MatchIndexedDBType } from "@/types/match";
+import CardMatchButtons from "./cardMatchButtons";
 import { usePathname } from "next/navigation";
-import { setMatchResult } from "@/server/actions/matchResult.action";
 
 interface CardMatchProps {
+  lastResult?: MatchIndexedDBType;
   match: MatchType;
   previusGuess: GuessType;
   setPreviusGuess: Dispatch<SetStateAction<GuessType>>;
+  guess: MatchIndexedDBType | null;
+  setChangeData: Dispatch<SetStateAction<number>>;
+  result: MatchIndexedDBType | null;
 }
 
 export default function CardMatch({
+  lastResult,
   match,
   previusGuess,
   setPreviusGuess,
+  guess,
+  setChangeData,
+  result,
 }: CardMatchProps) {
   const pathname = usePathname();
-  const session = useSession();
   const [isEditing, setIsEditing] = useState(false);
   const [currentGuess, setCurrentGuess] = useState<GuessType>({
     homeGoals: "-",
     awayGoals: "-",
+    extraTime: false,
+    homeETGoals: null,
+    awayETGoals: null,
+    homePenalties: null,
+    awayPenalties: null,
+    points: 0,
   });
   const [isValidGuess, setIsValidGuess] = useState(false);
 
@@ -47,89 +59,45 @@ export default function CardMatch({
     setIsValidGuess(true);
   }
 
-  function cancelEdit() {
-    setIsEditing(false);
-    if (currentGuess.homeGoals === "" || currentGuess.awayGoals === "") {
-      setCurrentGuess({
-        homeGoals: "-",
-        awayGoals: "-",
-      });
+  useEffect(() => {
+    if (!guess) return;
+    setCurrentGuess({
+      homeGoals: guess.homeGoals,
+      awayGoals: guess.awayGoals,
+      extraTime: guess.extraTime,
+      homeETGoals: guess.homeETGoals,
+      awayETGoals: guess.awayETGoals,
+      homePenalties: guess.homePenalties,
+      awayPenalties: guess.homePenalties,
+      points: guess.points,
+    });
+  }, [guess]);
+
+  const id =
+    lastResult && guess
+      ? lastResult.matchId === guess.matchId
+        ? "scrollTo"
+        : ""
+      : "";
+
+  useLayoutEffect(() => {
+    if (!id) {
+      return;
+    }
+    const el = document.getElementById("scrollTo");
+    if (!el) {
       return;
     }
 
-    setCurrentGuess(previusGuess);
-  }
-
-  async function changeGuess() {
-    if (isValidGuess) {
-      setIsEditing(false);
-      const toastId = toast.loading("Salvando");
-
-      if (pathname === "/results") {
-        const result = await setMatchResult(
-          match.id,
-          Number(currentGuess.homeGoals),
-          Number(currentGuess.awayGoals),
-        );
-
-        if (!result.success) {
-          toast.error(result.message, { id: toastId });
-
-          setCurrentGuess({
-            homeGoals: previusGuess.homeGoals,
-            awayGoals: previusGuess.awayGoals,
-          });
-          return;
-        }
-        toast.success("Salvo com sucesso", { id: toastId });
-      }
-
-      const result = await setGuess(
-        match.id,
-        Number(currentGuess.homeGoals),
-        Number(currentGuess.awayGoals),
-      );
-
-      if (!result.success) {
-        toast.error(result.message, { id: toastId });
-
-        setCurrentGuess({
-          homeGoals: previusGuess.homeGoals,
-          awayGoals: previusGuess.awayGoals,
-        });
-        return;
-      }
-
-      toast.success("Salvo com sucesso", { id: toastId });
-    }
-  }
-
-  function editGuess() {
-    const matchPreviusGuess: GuessType = {
-      homeGoals: "-",
-      awayGoals: "-",
-    };
-
-    if (currentGuess.homeGoals === "-" || currentGuess.awayGoals === "-") {
-      setCurrentGuess({
-        homeGoals: "",
-        awayGoals: "",
-      });
-    } else {
-      matchPreviusGuess.homeGoals = currentGuess.homeGoals;
-      matchPreviusGuess.awayGoals = currentGuess.awayGoals;
-    }
-
-    setPreviusGuess(matchPreviusGuess);
-
-    setIsEditing(true);
-    handleSaveButton(currentGuess);
-  }
+    el.scrollIntoView({
+      behavior: "smooth",
+    });
+  }, [id]);
 
   return (
     <div
-      key={match.id}
-      className="relative flex flex-col items-center justify-center p-3 shadow-xs shadow-amber-100/20 border border-(--primary-60) rounded-xl"
+      id={id}
+      className="relative flex flex-col items-center justify-center p-3 shadow-xs shadow-amber-100/20 border border-(--primary-60) rounded-xl scroll-mt-23 sm:scroll-mt-46"
     >
       <div className="w-full flex items-center justify-between">
         <span>Rodada {match.round}</span>
@@ -147,12 +115,16 @@ export default function CardMatch({
           .replace(",", " -")}
       </div>
       <Match
+        pathname={pathname}
         isEditing={isEditing}
         currentGuess={currentGuess}
         setCurrentGuess={setCurrentGuess}
         match={match}
         handleSaveButton={(newValue: GuessType) => handleSaveButton(newValue)}
       />
+      {pathname === "/guesses" && (
+        <Result result={result} currentGuess={currentGuess} />
+      )}
       <div className="flex flex-col items-center justify-center text-xs">
         <span>{match.stadium}</span>
         <span className="text-neutral-500">
@@ -160,50 +132,62 @@ export default function CardMatch({
           {STADIUMS_INFO[match.stadium].country}
         </span>
       </div>
-      {isEditing ? (
-        <div className="flex w-1/2 justify-around pt-2">
-          <Button
-            color="red"
-            onClick={() => cancelEdit()}
-            children={<ButtonCard label="Cancelar" children={<CloseSVG />} />}
-            className="not-sm:px-1.5! not-sm:py-1.5"
-          />
-
-          <Button
-            color={isValidGuess ? "green" : "gray"}
-            onClick={() => changeGuess()}
-            children={<ButtonCard label="Salvar" children={<AcceptSVG />} />}
-            className={`not-sm:px-1.5! not-sm:py-1.5 ${!isValidGuess && "cursor-default! hover:translate-none!"}`}
-          />
-        </div>
-      ) : (
-        <div>
-          {((pathname === "/results" && session.data?.user.role === "ADMIN") ||
-            GROUP_MATCHES[match.id - 1].datetime > new Date() ||
-            session.data?.user.role === "ADMIN") && (
-            <div
-              className="absolute left-3 bottom-3 cursor-pointer"
-              onClick={() => editGuess()}
-            >
-              <EditSVG />
-            </div>
-          )}
-        </div>
-      )}
+      <CardMatchButtons
+        pathname={pathname}
+        match={match}
+        previusGuess={previusGuess}
+        setPreviusGuess={setPreviusGuess}
+        isEditing={isEditing}
+        setIsEditing={setIsEditing}
+        currentGuess={currentGuess}
+        setCurrentGuess={setCurrentGuess}
+        isValidGuess={isValidGuess}
+        handleSaveButton={handleSaveButton}
+        setChangeData={setChangeData}
+        result={result}
+      />
     </div>
   );
 }
 
-function ButtonCard({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
+interface ResultProps {
+  result: MatchIndexedDBType | null;
+  currentGuess: GuessType | null;
+}
+
+function Result({ result, currentGuess }: ResultProps) {
   return (
-    <div className="flex items-center justify-center gap-2">
-      {children} <span className="not-sm:hidden">{label}</span>
+    <div className="w-full grid grid-cols-3 mb-3 ">
+      {result && (
+        <span
+          className={`col-start-1 text-center self-center text-green-400 text-xs font-bold`}
+        >
+          {currentGuess?.points === 1
+            ? "+ " + currentGuess.points + " pt"
+            : "+ " + currentGuess?.points + " pts"}
+        </span>
+      )}
+      <div className="col-start-2 flex gap-2 justify-center text-(--secondary) bg-gray-300 font-bold rounded-2xl relative">
+        <span
+          className={`w-6 h-6 text-center relative ${result && result.homePenalties && `before:absolute before:right-0 before:top-0 before:text-[10px] before:content-[${result.homePenalties}]`}`}
+        >
+          {result ? result.homeGoals : "-"}
+        </span>
+        <span>x</span>
+        <span
+          className={`w-6 h-6 text-center relative ${result && result.awayPenalties && `before:absolute before:right-0 before:top-0 before:text-[10px] before:content-[${result.awayPenalties}]`}`}
+        >
+          {result ? result.awayGoals : "-"}
+        </span>
+        {result?.extraTime && (
+          <span className="absolute w-10 right-0 text-center self-center text-sm">
+            P
+          </span>
+        )}
+      </div>
+      <div className="col-start-3 text-center self-center text-(--primary-60) text-sm font-bold">
+        {result ? "Finalizado" : ""}
+      </div>
     </div>
   );
 }
