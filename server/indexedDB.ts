@@ -16,7 +16,7 @@ import { getAllMatchResultsActions } from "./actions/matchResult.action";
 import { getAllUsersActions } from "./actions/user.actions";
 
 const DB_NAME = "WCDB";
-const DB_VERSION = 6;
+const DB_VERSION = 7;
 
 function createObjectStore(
   objectStore: string,
@@ -34,6 +34,8 @@ export function openIndexedDB(): Promise<IDBDatabase> {
 
     request.onupgradeneeded = () => {
       const db = request.result;
+
+      db.deleteObjectStore("guesses");
 
       createObjectStore("results", "matchId", db);
       createObjectStore("guessesUser", "matchId", db);
@@ -334,7 +336,6 @@ export async function handleGuesses() {
   if (!result.success) {
     return false;
   }
-  // console.log("getAllGuessesActions: ", result.data);
 
   setGuessesIndexedDB(result.data);
   return true;
