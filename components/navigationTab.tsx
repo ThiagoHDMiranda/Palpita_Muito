@@ -21,18 +21,11 @@ export default function NavitationTab() {
                 key={button.label}
                 color="custom"
                 onClick={() => router.push(button.pathname)}
-                // onClick={() =>
-                //   router.push(
-                //     button.pathname === "/results"
-                //       ? button.pathname + "#scrollTo"
-                //       : button.pathname,
-                //   )
-                // }
                 className={`rounded-bl-none rounded-br-none w-full sm:w-fit h-10 
             ${
               pathname === button.pathname
-                ? "bg-(--secondary) sm:bg-transparent text-lg sm:text-xl h-12 text-gray-300 border-gray-300 sm:hover:translate-none"
-                : "bg-neutral-500 text-(--secondary) border-(--secondary) sm:rounded-xl sm:px-5 sm:hover:bg-neutral-400 sm:shadow-xs sm:hover:shadow-md sm:shadow-white/30"
+                ? "bg-(--secondary) sm:bg-transparent sm:text-xl h-12 text-gray-300 border-gray-300 sm:hover:translate-none"
+                : "bg-neutral-500 text-(--secondary) text-sm border-(--secondary) sm:rounded-xl sm:px-5 sm:hover:bg-neutral-400 sm:shadow-xs sm:hover:shadow-md sm:shadow-white/30"
             }
           inset-shadow-xs inset-shadow-amber-100/20 sm:inset-shadow-none sm:border-none 
           `}
@@ -44,7 +37,8 @@ export default function NavitationTab() {
                         ? "var(--color-gray-300)"
                         : "var(--secondary)"
                     }
-                    size={pathname === button.pathname ? 32 : 25}
+                    size={25}
+                    // size={pathname === button.pathname ? 30 : 25}
                   />
                 </div>
                 <span>{button.label}</span>
