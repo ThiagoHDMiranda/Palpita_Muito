@@ -164,7 +164,7 @@ export default function Ranking() {
         <div className="flex flex-col w-full max-w-111 sm:max-w-125 md:max-w-148 overflow-x-auto overflow-y-hidden self-center gap-2 bg-gray-300 rounded-xl mb-10 p-2 pt-4 scrollbar-thumb-(--secondary)">
           <div className="w-full">
             <div
-              className="w-fit h-fit cursor-pointer bg-(--secondary) rounded-full p-1"
+              className="w-fit h-fit cursor-pointer bg-(--secondary) rounded-full p-1 sm:ml-4"
               onClick={() => updateData()}
             >
               <UpdateSVG />
@@ -272,7 +272,7 @@ function BodyRankingTable({ users, matchId, result }: BodyRankingTableType) {
         return (
           <tr
             key={user.userId}
-            className={`flex gap-1 sm:gap-5 md:gap-12 border-b py-1 ${user.userId === session.data?.user.userId && "bg-(--secondary)/30"}`}
+            className={`flex gap-1 sm:gap-5 md:gap-12 border-b py-1 ${user.userId === session.data?.user.userId && "bg-(--secondary)/20"}`}
           >
             <td className="w-15 text-center self-center">{user.position}°</td>
             <td className="w-35 text-center self-center">{user.name}</td>
