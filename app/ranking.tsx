@@ -29,7 +29,7 @@ type UserGuessesType = {
 export default function Ranking() {
   const [users, setUsers] = useState<UserGuessesType[] | null>(null);
   const [results, setResults] = useState<MatchIndexedDBType[] | null>(null);
-  const [matchId, setMatchId] = useState<number>(0);
+  const [matchId, setMatchId] = useState<number>(1);
   const [currentMatch, setCurrentMatch] = useState<MatchType>(MATCHES[0]);
   const [currentResult, setCurrentResult] = useState<MatchIndexedDBType | null>(
     null,
