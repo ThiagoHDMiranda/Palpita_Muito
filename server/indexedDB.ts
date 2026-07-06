@@ -16,11 +16,11 @@ import { getAllMatchResultsActions } from "./actions/matchResult.action";
 import { getAllUsersActions } from "./actions/user.actions";
 
 const DB_NAME = "WCDB";
-const DB_VERSION = 3;
+const DB_VERSION = 6;
 
 function createObjectStore(
   objectStore: string,
-  keypath: string,
+  keypath: string | string[],
   db: IDBDatabase,
 ) {
   if (!db.objectStoreNames.contains(objectStore)) {
@@ -38,7 +38,7 @@ export function openIndexedDB(): Promise<IDBDatabase> {
       createObjectStore("results", "matchId", db);
       createObjectStore("guessesUser", "matchId", db);
       createObjectStore("users", "userId", db);
-      createObjectStore("guesses", "matchId", db);
+      createObjectStore("guesses", ["userId", "matchId"], db);
     };
 
     request.onsuccess = () => resolve(request.result);
@@ -310,6 +310,7 @@ export async function handleGuesses() {
   if (!result.success) {
     return false;
   }
+  console.log("getAllGuessesActions: ", result.data);
 
   setGuessesIndexedDB(result.data);
   return true;
