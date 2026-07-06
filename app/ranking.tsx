@@ -8,6 +8,8 @@ import {
   getAllGuessesIndexedDB,
   getAllResultsIndexedDB,
   getAllUsersIndexedDB,
+  getSessionStorage,
+  syncIfNeeded,
   updateResultsAndGuesses,
 } from "@/server/indexedDB";
 import { MatchIndexedDBType } from "@/types/match";
@@ -76,6 +78,8 @@ export default function Ranking() {
   }
 
   async function getData() {
+    await syncIfNeeded();
+
     await getUsersAndGuesses();
     await getResults();
   }
@@ -84,11 +88,11 @@ export default function Ranking() {
     let newMatchId = matchId;
 
     if (type === "decrease") {
-      if (newMatchId !== 0) {
+      if (newMatchId !== 1) {
         newMatchId = matchId - 1;
       }
     } else {
-      if (newMatchId !== lastIndex) {
+      if (newMatchId !== lastIndex + 1) {
         newMatchId = matchId + 1;
       }
     }
@@ -146,7 +150,20 @@ export default function Ranking() {
                     <th className="w-15 text-center self-center">Posição</th>
                     <th className="w-35 text-center self-center">Nome</th>
                     <th className="w-15 text-center self-center">Pontos</th>
-                    <th className="flex justify-center items-center w-35">
+                    <th className="flex justify-center items-center w-35 relative">
+                      <div className="absolute flex justify-between px-3 w-full -top-3 text-xs">
+                        <div>
+                          {currentMatch.group !== ""
+                            ? "Grupo " + currentMatch.group
+                            : ""}
+                        </div>
+                        <div>
+                          {["1", "2", "3"].includes(currentMatch.round)
+                            ? "Rodada " + currentMatch.round
+                            : currentMatch.round}
+                        </div>
+                        {/* const ROUNDS = [ "1", "2", "3", "16 avos", "Oitavas", "Quartas", "Semi", "Terceiro lugar", "Final", ]; */}
+                      </div>
                       <div
                         className={`flex w-fit h-fit items-center justify-center rotate-90 ${matchId !== 1 && "cursor-pointer"}`}
                         onClick={() => changeMatchId("decrease")}
@@ -185,12 +202,12 @@ export default function Ranking() {
                         </div>
                       </div>
                       <div
-                        className={`flex w-fit h-fit items-center justify-center -rotate-90 ${matchId + 1 !== lastIndex && "cursor-pointer"}`}
+                        className={`flex w-fit h-fit items-center justify-center -rotate-90 ${matchId !== lastIndex + 1 && "cursor-pointer"}`}
                         onClick={() => changeMatchId("increase")}
                       >
                         <DownArrow
                           color={
-                            matchId + 1 === lastIndex
+                            matchId === lastIndex + 1
                               ? "var(--color-gray-500)"
                               : "var(--secondary)"
                           }

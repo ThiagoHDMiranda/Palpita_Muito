@@ -100,8 +100,14 @@ export default function CardMatch({
       className="relative flex flex-col items-center justify-center p-3 shadow-xs shadow-amber-100/20 border border-(--primary-60) rounded-xl scroll-mt-23 sm:scroll-mt-46"
     >
       <div className="w-full flex items-center justify-between">
-        <span>Rodada {match.round}</span>
-        <span className="self-end">Grupo {match.group}</span>
+        <span>
+          {["1", "2", "3"].includes(match.round)
+            ? "Rodada " + match.round
+            : match.round}
+        </span>
+        {["1", "2", "3"].includes(match.round) && (
+          <span className="self-end">Grupo {match.group}</span>
+        )}
       </div>
       <div className="text-sm text-(--primary-60) font-bold">
         {match.datetime

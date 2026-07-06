@@ -18,6 +18,7 @@ CREATE TABLE "Guess" (
     "matchId" INTEGER NOT NULL,
     "homeGoals" INTEGER NOT NULL,
     "awayGoals" INTEGER NOT NULL,
+    "points" INTEGER NOT NULL DEFAULT 0,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -29,6 +30,11 @@ CREATE TABLE "MatchResult" (
     "matchId" INTEGER NOT NULL,
     "homeGoals" INTEGER NOT NULL,
     "awayGoals" INTEGER NOT NULL,
+    "extraTime" BOOLEAN NOT NULL DEFAULT false,
+    "homeETGoals" INTEGER,
+    "awayETGoals" INTEGER,
+    "homePenalties" INTEGER,
+    "awayPenalties" INTEGER,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "MatchResult_pkey" PRIMARY KEY ("matchId")

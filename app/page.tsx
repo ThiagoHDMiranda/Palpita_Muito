@@ -2,7 +2,7 @@ import AppBar from "@/components/appBar";
 import MaxWidth from "@/components/maxWidth";
 import NavitationTab from "@/components/navigationTab";
 import Ranking from "./ranking";
-import Standings from "./guesses/standings";
+import InstallPWAButton from "@/components/InstallPWAButton";
 
 export default async function Home() {
   return (
@@ -14,6 +14,7 @@ export default async function Home() {
           <div className="pt-5 flex flex-col">
             <Ranking />
           </div>
+          <InstallPWAButton />
         </MaxWidth>
       </div>
     </div>

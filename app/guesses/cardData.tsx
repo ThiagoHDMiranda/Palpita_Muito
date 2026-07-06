@@ -1,7 +1,7 @@
 "use client";
 
 import Dropdown from "@/components/dropdown";
-import GROUP_MATCHES, { GROUPS, MatchType } from "../../constants/matches";
+import MATCHES, { GROUPS, MatchType } from "../../constants/matches";
 import { useEffect, useState } from "react";
 import CardMatches from "./cardMatches";
 import Standings from "./standings";
@@ -14,7 +14,7 @@ import {
 } from "@/server/indexedDB";
 import Loading from "@/components/loading";
 
-const RoundList = [
+const RoundListLabel = [
   "FASE DE GRUPOS",
   "SEGUNDA FASE",
   "OITAVAS DE FINAL",
@@ -24,6 +24,15 @@ const RoundList = [
 ];
 
 export type RoundGroupChosenType = 1 | 2 | 3;
+
+const RoundList = [
+  ["1", "2", "3"],
+  ["16 avos"],
+  ["Oitavas"],
+  ["Quartas"],
+  ["Semi"],
+  ["Terceiro lugar", "Final"],
+];
 
 export default function CardData() {
   const groupLastIndex = GROUPS.length - 2;
@@ -100,22 +109,29 @@ export default function CardData() {
   }, [changeData]);
 
   function handleGroupChanges() {
-    const matches = GROUP_MATCHES.filter(
-      (match) => match.group === groupChosen,
-    );
+    const RoundListArray = RoundList[roundChosen];
 
-    setGroupMatches(matches);
+    let matches;
 
-    const rMatches = matches.filter(
-      (match) => match.round === roundGroupChosen.toString(),
-    );
+    if (roundChosen === 0) {
+      matches = MATCHES.filter((match) => match.group === groupChosen);
+      setGroupMatches(matches);
 
-    setRoundMatches(rMatches);
+      matches = matches.filter(
+        (match) => match.round === roundGroupChosen.toString(),
+      );
+    } else {
+      matches = MATCHES.filter((match) => RoundListArray.includes(match.round));
+      console.log(matches);
+      console.log("groupMatches: ", !groupMatches[0]);
+    }
+
+    setRoundMatches(matches);
   }
 
   useEffect(() => {
     handleGroupChanges();
-  }, [groupChosen, roundGroupChosen]);
+  }, [groupChosen, roundGroupChosen, roundChosen]);
 
   return (
     <div>
@@ -126,12 +142,12 @@ export default function CardData() {
           <div className="flex gap-5">
             <Dropdown
               label="FASE: "
-              list={RoundList}
+              list={RoundListLabel}
               chosen={roundChosen}
               setChosen={setRoundChosen}
             />
           </div>
-          {roundChosen === 0 && (
+          {roundChosen === 0 ? (
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2">
                 <ChooseGroup
@@ -155,6 +171,21 @@ export default function CardData() {
                 guesses={guesses}
                 results={results}
               />
+            </div>
+          ) : (
+            <div className="mb-10 sm:mb-5">
+              {!roundMatches[0] ? (
+                <div className="text-center text-gray-300 font-bold mt-5">
+                  Jogos indefinidos
+                </div>
+              ) : (
+                <CardMatches
+                  matches={roundMatches}
+                  guesses={guesses}
+                  setChangeData={setChangeData}
+                  results={results}
+                />
+              )}
             </div>
           )}
         </div>

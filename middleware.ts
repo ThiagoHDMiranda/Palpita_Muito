@@ -28,13 +28,12 @@ export default withAuth(
   {
     callbacks: {
       authorized: ({ token, req }) => {
-        return true;
+        // return true;
         const path = req.nextUrl.pathname;
 
         if (path.startsWith("/auth")) {
           return true;
         }
-
         return !!token;
       },
     },
@@ -46,5 +45,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ["/user/:path*", "/admin/:path*", "/auth/:path*", "/"],
+  matcher: ["/guesses", "/results", "/auth/:path*", "/"],
 };

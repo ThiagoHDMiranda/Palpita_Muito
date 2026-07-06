@@ -223,7 +223,7 @@ async function setUsersIndexedDB(users: { id: string; name: string | null }[]) {
   return new Promise<void>((resolve, reject) => {
     const tx = db.transaction("users", "readwrite");
     const store = tx.objectStore("users");
-    console.log("setUsersIndexedDB: ", users);
+
     users.forEach((user) => {
       store.put({
         userId: user.id,
@@ -242,7 +242,6 @@ async function setGuessesIndexedDB(guesses: GuessDBType[]) {
   return new Promise<void>((resolve, reject) => {
     const tx = db.transaction("guesses", "readwrite");
     const store = tx.objectStore("guesses");
-    console.log("setGuessesIndexedDB: ", guesses);
 
     guesses.map((guess) => {
       store.put({
@@ -317,12 +316,12 @@ export async function handleGuesses() {
 }
 
 export async function updateResultsAndGuesses() {
-  const isGuessesFromUserOk = await handleGuessesFromUser();
+  await handleGuessesFromUser();
   const isResultsOk = await handleResults();
   const isUsersOk = await handleUsers();
   const isGuessesOk = await handleGuesses();
 
-  if (!isGuessesFromUserOk || !isResultsOk || !isUsersOk || isGuessesOk) {
+  if (!isResultsOk || !isUsersOk || !isGuessesOk) {
     return false;
   }
 
@@ -334,7 +333,7 @@ export async function syncIfNeeded() {
     return;
   }
 
-  const isResultsAndGuessesUpdated = updateResultsAndGuesses();
+  const isResultsAndGuessesUpdated = await updateResultsAndGuesses();
 
   if (!isResultsAndGuessesUpdated) {
     return;
