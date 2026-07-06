@@ -96,7 +96,7 @@ function SwitchStandings({
         color="custom"
         onClick={() => setIsMyStandings(false)}
       >
-        Tabela real
+        Tabela resultado
       </Button>
     </div>
   );
