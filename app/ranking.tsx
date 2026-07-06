@@ -272,7 +272,7 @@ function BodyRankingTable({ users, matchId, result }: BodyRankingTableType) {
         return (
           <tr
             key={user.userId}
-            className="flex gap-1 sm:gap-5 md:gap-12 border-b py-1"
+            className={`flex gap-1 sm:gap-5 md:gap-12 border-b py-1 ${user.userId === session.data?.user.userId && "bg-(--secondary)/30"}`}
           >
             <td className="w-15 text-center self-center">{user.position}°</td>
             <td className="w-35 text-center self-center">{user.name}</td>
@@ -280,7 +280,7 @@ function BodyRankingTable({ users, matchId, result }: BodyRankingTableType) {
             <td className="relative flex items-center justify-center w-35 text-center self-center">
               <div className="flex w-full px-9 justify-between text-sm">
                 <div>
-                  {(result || session.data?.user.userId === user.userId) &&
+                  {(result || user.userId === session.data?.user.userId) &&
                   guess[0]
                     ? guess[0].homeGoals
                     : "-"}
@@ -293,7 +293,7 @@ function BodyRankingTable({ users, matchId, result }: BodyRankingTableType) {
                     : "-"}
                 </div>
               </div>
-              <div className="absolute right-1 w-fit shrink-0 text-xs text-green-600">
+              <div className="absolute right-1 w-fit shrink-0 text-xs text-green-600 font-bold">
                 {result ? (guess[0] ? "+ " + guess[0].points : "+ 0") : ""}
               </div>
             </td>
