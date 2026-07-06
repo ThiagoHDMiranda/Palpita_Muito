@@ -114,7 +114,7 @@ export default function Match({
             )}
         </div>
       </div>
-      <div className="flex items-center justify-center w-1/12 text-center">
+      <div className="flex items-center justify-center w-1/12 text-center text-sm">
         x
       </div>
       <div
