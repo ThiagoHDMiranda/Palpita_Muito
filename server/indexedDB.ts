@@ -165,8 +165,26 @@ export async function saveGuessFromUserIndexedDB({
   });
 }
 
+async function clearObjectStore(
+  objectStore: string,
+  type: IDBTransactionModeType,
+  db: IDBDatabase,
+) {
+  return new Promise<boolean>((resolve, reject) => {
+    const txGuessesUser = db.transaction(objectStore, type);
+    const storeGuessesUser = txGuessesUser.objectStore(objectStore);
+
+    storeGuessesUser.clear();
+
+    txGuessesUser.oncomplete = () => resolve(true);
+    txGuessesUser.onerror = () => reject(false);
+  });
+}
+
 async function setGuessesFromUserIndexedDB(guesses: GuessDBType[]) {
   const db = await openIndexedDB();
+
+  await clearObjectStore("guessesUser", "readwrite", db);
 
   return new Promise<void>((resolve, reject) => {
     const tx = db.transaction("guessesUser", "readwrite");
@@ -194,6 +212,8 @@ async function setGuessesFromUserIndexedDB(guesses: GuessDBType[]) {
 async function setResultsIndexedDB(results: MatchResultType[]) {
   const db = await openIndexedDB();
 
+  await clearObjectStore("results", "readwrite", db);
+
   return new Promise<void>((resolve, reject) => {
     const tx = db.transaction("results", "readwrite");
     const store = tx.objectStore("results");
@@ -220,6 +240,8 @@ async function setResultsIndexedDB(results: MatchResultType[]) {
 async function setUsersIndexedDB(users: { id: string; name: string | null }[]) {
   const db = await openIndexedDB();
 
+  await clearObjectStore("users", "readwrite", db);
+
   return new Promise<void>((resolve, reject) => {
     const tx = db.transaction("users", "readwrite");
     const store = tx.objectStore("users");
@@ -238,6 +260,8 @@ async function setUsersIndexedDB(users: { id: string; name: string | null }[]) {
 
 async function setGuessesIndexedDB(guesses: GuessDBType[]) {
   const db = await openIndexedDB();
+
+  await clearObjectStore("guesses", "readwrite", db);
 
   return new Promise<void>((resolve, reject) => {
     const tx = db.transaction("guesses", "readwrite");
