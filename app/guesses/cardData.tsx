@@ -122,8 +122,6 @@ export default function CardData() {
       );
     } else {
       matches = MATCHES.filter((match) => RoundListArray.includes(match.round));
-      console.log(matches);
-      console.log("groupMatches: ", !groupMatches[0]);
     }
 
     setRoundMatches(matches);

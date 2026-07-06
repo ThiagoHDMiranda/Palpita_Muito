@@ -334,7 +334,7 @@ export async function handleGuesses() {
   if (!result.success) {
     return false;
   }
-  console.log("getAllGuessesActions: ", result.data);
+  // console.log("getAllGuessesActions: ", result.data);
 
   setGuessesIndexedDB(result.data);
   return true;
