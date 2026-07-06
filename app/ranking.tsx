@@ -8,7 +8,6 @@ import {
   getAllGuessesIndexedDB,
   getAllResultsIndexedDB,
   getAllUsersIndexedDB,
-  getSessionStorage,
   syncIfNeeded,
   updateResultsAndGuesses,
 } from "@/server/indexedDB";
@@ -27,7 +26,9 @@ type UserGuessesType = {
 };
 
 export default function Ranking() {
-  const [users, setUsers] = useState<UserGuessesType[] | null>(null);
+  const [users, setUsers] = useState<
+    (UserGuessesType & { position: number })[] | null
+  >(null);
   const [results, setResults] = useState<MatchIndexedDBType[] | null>(null);
   const [matchId, setMatchId] = useState<number>(1);
   const [currentMatch, setCurrentMatch] = useState<MatchType>(MATCHES[0]);
@@ -57,10 +58,35 @@ export default function Ranking() {
         points: sumPoints,
       };
     });
-    usersAndGuesses.sort((user1, user2) => user1.points + user2.points);
+    usersAndGuesses.sort((user1, user2) => user2.points - user1.points);
+
+    let position = 1;
+
+    const usersAndGuessesOrdered = usersAndGuesses.map((user, index) => {
+      if (index === 0) {
+        return {
+          ...user,
+          position: position,
+        };
+      }
+
+      if (user.points === usersAndGuesses[index - 1].points) {
+        return {
+          ...user,
+          position: position,
+        };
+      }
+
+      position = index + 1;
+
+      return {
+        ...user,
+        position: position,
+      };
+    });
 
     // console.log("usersAndGuesses: ", usersAndGuesses);
-    setUsers(usersAndGuesses);
+    setUsers(usersAndGuessesOrdered);
   }
 
   async function getResults() {
@@ -231,7 +257,7 @@ export default function Ranking() {
 }
 
 interface BodyRankingTableType {
-  users: UserGuessesType[];
+  users: (UserGuessesType & { position: number })[];
   matchId: number;
   result: MatchIndexedDBType | null;
 }
@@ -241,19 +267,14 @@ function BodyRankingTable({ users, matchId, result }: BodyRankingTableType) {
 
   return (
     <tbody>
-      {users.map((user, index) => {
+      {users.map((user) => {
         const guess = user.guesses.filter((guess) => guess.matchId === matchId);
         return (
           <tr
             key={user.userId}
             className="flex gap-1 sm:gap-5 md:gap-12 border-b py-1"
           >
-            <td className="w-15 text-center self-center">
-              {index !== 0 && users[index - 1].points === user.points
-                ? index
-                : index + 1}
-              °
-            </td>
+            <td className="w-15 text-center self-center">{user.position}°</td>
             <td className="w-35 text-center self-center">{user.name}</td>
             <td className="w-15 text-center self-center">{user.points}</td>
             <td className="relative flex items-center justify-center w-35 text-center self-center">
