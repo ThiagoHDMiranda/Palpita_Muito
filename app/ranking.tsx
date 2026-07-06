@@ -246,6 +246,7 @@ export default function Ranking() {
                   users={users}
                   matchId={matchId}
                   result={currentResult}
+                  match={currentMatch}
                 />
               </table>
             </div>
@@ -260,9 +261,15 @@ interface BodyRankingTableType {
   users: (UserGuessesType & { position: number })[];
   matchId: number;
   result: MatchIndexedDBType | null;
+  match: MatchType;
 }
 
-function BodyRankingTable({ users, matchId, result }: BodyRankingTableType) {
+function BodyRankingTable({
+  users,
+  matchId,
+  result,
+  match,
+}: BodyRankingTableType) {
   const session = useSession();
 
   return (
@@ -280,14 +287,18 @@ function BodyRankingTable({ users, matchId, result }: BodyRankingTableType) {
             <td className="relative flex items-center justify-center w-35 text-center self-center">
               <div className="flex w-full px-9 justify-between text-sm">
                 <div>
-                  {(result || user.userId === session.data?.user.userId) &&
+                  {(result ||
+                    user.userId === session.data?.user.userId ||
+                    match.datetime <= new Date()) &&
                   guess[0]
                     ? guess[0].homeGoals
                     : "-"}
                 </div>
                 <div>x</div>
                 <div>
-                  {(result || session.data?.user.userId === user.userId) &&
+                  {(result ||
+                    session.data?.user.userId === user.userId ||
+                    match.datetime <= new Date()) &&
                   guess[0]
                     ? guess[0].awayGoals
                     : "-"}
