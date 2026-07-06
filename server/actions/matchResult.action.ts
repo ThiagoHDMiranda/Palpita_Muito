@@ -10,8 +10,9 @@ import {
 } from "../repositories/matchResult.repositories";
 import { findById } from "../repositories/user.repositories";
 import { UserType } from "./user.actions";
-import { getGuessesByMatchIdActions, setGuessActions } from "./guess.action";
+import { getGuessesByMatchIdActions } from "./guess.action";
 import { GuessDBType, MatchResultType } from "@/types/match";
+import { updateGuess } from "../repositories/guess.repositories";
 
 export async function getAllMatchResultsActions(): Promise<
   ActionResult<MatchResultType[]>
@@ -91,15 +92,15 @@ export async function setGuessPoints(
         const points = calculatePoints(result, match);
         if (match.points === points) return match;
 
-        const setGuessResult = await setGuessActions(
+        const setGuessResult = await updateGuess(
+          match.userId,
           matchId,
           match.homeGoals,
           match.awayGoals,
           points,
         );
-        if (!setGuessResult.success) return match;
 
-        return setGuessResult.data;
+        return setGuessResult;
       }),
     );
 
