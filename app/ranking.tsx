@@ -161,7 +161,7 @@ export default function Ranking() {
       {!users || !users[0] ? (
         <Loading />
       ) : (
-        <div className="flex flex-col w-full max-w-111 sm:max-w-125 md:max-w-148 overflow-x-auto overflow-y-hidden self-center gap-2 bg-gray-300 rounded-xl mb-10 p-2 pt-4 scrollbar-thumb-(--secondary)">
+        <div className="flex flex-col w-full max-w-111 sm:max-w-128 md:max-w-148  self-center gap-2 bg-gray-300 rounded-xl mb-10 p-2 pt-4">
           <div className="w-full">
             <div
               className="w-fit h-fit cursor-pointer bg-(--secondary) rounded-full p-1 sm:ml-4"
@@ -169,7 +169,7 @@ export default function Ranking() {
             >
               <UpdateSVG />
             </div>
-            <div className="flex gap-5">
+            <div className="flex gap-5 overflow-x-auto scrollbar-thumb-(--secondary) pb-2 pt-4">
               <table className="w-fit flex flex-col gap-1 text-(--secondary) rounded-t-2xl sm:gap-2 sm:p-4 sm:pt-6 sm:text-lg">
                 <thead>
                   <tr className="flex gap-1 sm:gap-5 md:gap-12 border-b">
