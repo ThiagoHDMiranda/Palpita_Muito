@@ -68,7 +68,7 @@ export default function CardMatch({
       homeETGoals: guess.homeETGoals,
       awayETGoals: guess.awayETGoals,
       homePenalties: guess.homePenalties,
-      awayPenalties: guess.homePenalties,
+      awayPenalties: guess.awayPenalties,
       points: guess.points,
     });
   }, [guess]);
@@ -175,21 +175,25 @@ function Result({ result, currentGuess }: ResultProps) {
       )}
       <div className="col-start-2 flex gap-2 justify-center text-(--secondary) bg-gray-300 font-bold rounded-2xl relative">
         <span
-          className={`w-6 h-6 text-center relative ${result && result.homePenalties && `before:absolute before:right-0 before:top-0 before:text-[10px] before:content-[${result.homePenalties}]`}`}
+          className={`w-6 h-6 text-center relative 
+            `}
+          // ${result && result.homePenalties && `before:absolute before:right-0 before:top-0 before:text-[10px] before:content-[${result.homePenalties}]`}
         >
           {result ? result.homeGoals : "-"}
         </span>
         <span>x</span>
         <span
-          className={`w-6 h-6 text-center relative ${result && result.awayPenalties && `before:absolute before:right-0 before:top-0 before:text-[10px] before:content-[${result.awayPenalties}]`}`}
+          className={`w-6 h-6 text-center relative 
+            `}
+          // ${result && result.awayPenalties && `before:absolute before:right-0 before:top-0 before:text-[10px] before:content-[${result.awayPenalties}]`}
         >
           {result ? result.awayGoals : "-"}
         </span>
-        {result?.extraTime && (
+        {/* {result?.extraTime && (
           <span className="absolute w-10 right-0 text-center self-center text-sm">
             P
           </span>
-        )}
+        )} */}
       </div>
       <div className="col-start-3 text-center self-center text-(--primary-60) text-sm font-bold">
         {result ? "Finalizado" : ""}
