@@ -16,7 +16,7 @@ import { getAllMatchResultsActions } from "./actions/matchResult.action";
 import { getAllUsersActions } from "./actions/user.actions";
 
 const DB_NAME = "WCDB";
-const DB_VERSION = 7;
+const DB_VERSION = 8;
 
 function createObjectStore(
   objectStore: string,
@@ -34,8 +34,6 @@ export function openIndexedDB(): Promise<IDBDatabase> {
 
     request.onupgradeneeded = () => {
       const db = request.result;
-
-      db.deleteObjectStore("guesses");
 
       createObjectStore("results", "matchId", db);
       createObjectStore("guessesUser", "matchId", db);
