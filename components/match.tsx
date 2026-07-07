@@ -179,8 +179,12 @@ export default function Match({
         <span className="truncate max-w-4/6 pr-3">{match.awayTeam.label}</span>
       </div>
       {pathname === "/results" && (currentGuess.extraTime || isEditing) && (
-        <div className="absolute w-10 -top-1 flex items-center text-gray-300 justify-center text-xs">
-          <span>P</span>
+        <div
+          className={`absolute w-10 flex items-center text-gray-300 justify-center text-xs ${isEditing ? "-top-1" : "top-0"}`}
+        >
+          <span className="overflow-visible text-nowrap">
+            {isEditing ? "P" : "Pós Prorrogação"}
+          </span>
           {isEditing && (
             <input
               className="absolute right-0 w-3 h-3"
