@@ -144,10 +144,14 @@ export async function setMatchResult(
         awayPenalties,
       );
 
-      setGuessPoints(result.matchId, {
+      const resultSetGuess = await setGuessPoints(result.matchId, {
         homeGoals: result.homeGoals,
         awayGoals: result.awayGoals,
       });
+
+      if (!resultSetGuess.success)
+        return { success: false, message: "Erro no servidor" };
+
       return { success: true, data: result };
     }
 
@@ -162,10 +166,13 @@ export async function setMatchResult(
       awayPenalties,
     );
 
-    setGuessPoints(result.matchId, {
+    const resultSetGuess = await setGuessPoints(result.matchId, {
       homeGoals: result.homeGoals,
       awayGoals: result.awayGoals,
     });
+
+    if (!resultSetGuess.success)
+      return { success: false, message: "Erro no servidor" };
 
     return { success: true, data: result };
   } catch (err) {
