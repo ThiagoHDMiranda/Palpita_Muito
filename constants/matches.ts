@@ -942,6 +942,42 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-07-07T20:00:00Z"),
     stadium: "BC Place",
   },
+  {
+    id: 97,
+    group: "",
+    round: "Quartas",
+    homeTeam: TEAMS.FRA,
+    awayTeam: TEAMS.MAR,
+    datetime: new Date("2026-07-09T20:00:00Z"),
+    stadium: "Gillette Stadium",
+  },
+  {
+    id: 98,
+    group: "",
+    round: "Quartas",
+    homeTeam: TEAMS.ESP,
+    awayTeam: TEAMS.BEL,
+    datetime: new Date("2026-07-10T19:00:00Z"),
+    stadium: "SoFi Stadium",
+  },
+  {
+    id: 99,
+    group: "",
+    round: "Quartas",
+    homeTeam: TEAMS.NOR,
+    awayTeam: TEAMS.ENG,
+    datetime: new Date("2026-07-11T21:00:00Z"),
+    stadium: "Hard Rock Stadium",
+  },
+  {
+    id: 100,
+    group: "",
+    round: "Quartas",
+    homeTeam: TEAMS.ARG,
+    awayTeam: TEAMS.SUI,
+    datetime: new Date("2026-07-12T01:00:00Z"),
+    stadium: "Arrowhead Stadium",
+  },
 ];
 
 export default MATCHES;
