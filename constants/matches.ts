@@ -978,6 +978,42 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-07-12T01:00:00Z"),
     stadium: "Arrowhead Stadium",
   },
+  {
+    id: 101,
+    group: "",
+    round: "Semi",
+    homeTeam: TEAMS.FRA,
+    awayTeam: TEAMS.ESP,
+    datetime: new Date("2026-07-14T19:00:00Z"),
+    stadium: "AT&T Stadium",
+  },
+  // {
+  //   id: 102,
+  //   group: "",
+  //   round: "Semi",
+  //   homeTeam: TEAMS.,
+  //   awayTeam: TEAMS.,
+  //   datetime: new Date("2026-07-15T19:00:00Z"),
+  //   stadium: "Mercedes-Benz Stadium",
+  // },
+  // {
+  //   id: 103,
+  //   group: "",
+  //   round: "Terceiro lugar",
+  //   homeTeam: TEAMS.,
+  //   awayTeam: TEAMS.,
+  //   datetime: new Date("2026-07-18T21:00:00Z"),
+  //   stadium: "Hard Rock Stadium",
+  // },
+  // {
+  //   id: 104,
+  //   group: "",
+  //   round: "Final",
+  //   homeTeam: TEAMS.,
+  //   awayTeam: TEAMS.,
+  //   datetime: new Date("2026-07-19T19:00:00Z"),
+  //   stadium: "MetLife Stadium",
+  // },
 ];
 
 export default MATCHES;
