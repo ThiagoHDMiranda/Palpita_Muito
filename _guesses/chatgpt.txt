@@ -1,3 +1,5 @@
+First stage - Round 1:
+
 Mexico 2–0 South Africa
 South Korea 2–1 Czech Republic
 Canada 2–1 Bosnia
@@ -22,6 +24,8 @@ Portugal 3–0 DR Congo
 England 2–1 Croatia
 Ghana 2–1 Panama
 Colombia 2–0 Uzbekistan
+
+First stage - Round 2:
 
 Czech Republic 2–0 South Africa
 Switzerland 2–0 Bosnia
@@ -48,6 +52,8 @@ England 2–1 Ghana
 Croatia 2–0 Panama
 Colombia 2–1 DR Congo
 
+First stage - Round 3:
+
 Switzerland 2–1 Canada
 Bosnia 2–1 Qatar
 Morocco 2–0 Haiti
@@ -73,20 +79,52 @@ Portugal 2–1 Colombia
 Argentina 3–0 Jordan
 Austria 2–1 Algeria
 
+Round of 32:
 
-South Africa 🇿🇦 vs Canada 🇨🇦	0–2 Canada (already finished 0–1)
-Brazil 🇧🇷 vs Japan 🇯🇵	3–1 Brazil
-Germany 🇩🇪 vs Paraguay 🇵🇾	2–0 Germany
-Netherlands 🇳🇱 vs Morocco 🇲🇦	2–1 Netherlands
-Ivory Coast 🇨🇮 vs Norway 🇳🇴	1–2 Norway
-France 🇫🇷 vs Sweden 🇸🇪	2–1 France
-Mexico 🇲🇽 vs Ecuador 🇪🇨	2–1 Mexico
-England 🏴 vs DR Congo 🇨🇩	3–0 England
-Belgium 🇧🇪 vs Senegal 🇸🇳	2–1 Belgium
-United States 🇺🇸 vs Bosnia-Herzegovina 🇧🇦	2–0 United States
-Spain 🇪🇸 vs Austria 🇦🇹	2–0 Spain
-Portugal 🇵🇹 vs Croatia 🇭🇷	1–1 Portugal (after extra time)
-Switzerland 🇨🇭 vs Algeria 🇩🇿	2–0 Switzerland
-Australia 🇦🇺 vs Egypt 🇪🇬	1–1 (Australia wins on penalties)
-Argentina 🇦🇷 vs Cape Verde 🇨🇻	4–0 Argentina
-Colombia 🇨🇴 vs Ghana 🇬🇭	2–1 Colombia
+South Africa 0–2 Canada 
+Brazil 3–1 Japan 
+Germany 2-0 Paraguay 
+Netherlands 2-1 Morocco
+Ivory Coast 1-2 Norway
+France 2-1 Sweden
+Mexico 2-1 Ecuador 
+England 3-0 DR Congo
+Belgium 2-1 Senegal 
+United States 2-0 Bosnia-Herzegovina
+Spain 2-0 Austria
+Portugal 1-1 Croatia 
+Switzerland 2-0 Algeria
+Australia 1-1 Egypt
+Argentina 4-0 Cape Verde
+Colombia 2-1 Ghana
+
+Round of 16:
+
+Canadá 1 x 2 Marrocos
+Paraguai 0 x 2 França
+Brasil 2 x 1 Noruega
+México 1 x 2 Inglaterra
+Portugal 1 x 2 Espanha
+Estados Unidos 1 x 2 Bélgica
+Argentina 3 x 0 Egito
+Suíça 1 x 2 Colômbia
+
+Quarter-final:
+
+France 2 x 1 Morocco
+Spain 2 x 1 Belgium
+Norway 1 x 2 England
+Argentina 2 x 0 Switzerland
+
+Semi-final:
+
+France 2 x 1 Spain
+England 1 x 2 Argentina
+
+Bronze final:
+
+France 2 x 1 England
+
+Final:
+
+Spain 1 x 2 Argentina

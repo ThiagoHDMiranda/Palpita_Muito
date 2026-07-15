@@ -1,3 +1,5 @@
+First stage - Round 1:
+
 Mexico 2-0 South Africa
 South Korea 2-1 Czech Republic
 Canada 1-1 Bosnia
@@ -22,6 +24,8 @@ Portugal 3-0 DR Congo
 England 2-1 Croatia
 Ghana 1-1 Panama
 Uzbekistan 0-2 Colombia
+
+First stage - Round 2:
 
 Czech Republic 2-1 South Africa
 Switzerland 2-1 Bosnia
@@ -48,6 +52,8 @@ England 3-1 Ghana
 Panama 1-2 Croatia
 Colombia 2-0 DR Congo
 
+First stage - Round 3:
+
 Switzerland 1-1 Canada
 Bosnia 2-1 Qatar
 Morocco 3-0 Haiti
@@ -73,6 +79,7 @@ Colombia 1-2 Portugal
 Jordan 0-3 Argentina
 Algeria 1-1 Austria
 
+Round of 32:
 
 South Africa v Canada 1-2
 Germany v Paraguay	3–1
@@ -90,3 +97,34 @@ Switzerland v Algeria	1–0
 Australia v Egypt	1–2
 Argentina v Cape Verde	3–0
 Colombia v Ghana	2–1
+
+Round of 16:
+
+Canada v Morocco 1–2
+Paraguay v France	0–2
+Brazil v Norway	1–1
+Mexico v England 0–2
+Portugal v Spain 1–1
+United States v Belgium	1–2
+Argentina v Egypt 3–1
+Switzerland v Colombia 0–1
+
+Quarter-final:
+
+France 2-0 Morocco  
+Spain 1-1 Belgium  
+Norway 2-2 England  
+Argentina 1-0 Switzerland
+
+Semi-final:
+
+France 1 x 1 Spain
+England 2 x 2 Argentina
+
+Bronze final:
+
+France 1-1 England
+
+Final:
+
+Spain 1-2 Argentina
