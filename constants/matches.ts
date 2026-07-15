@@ -996,24 +996,24 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-07-15T19:00:00Z"),
     stadium: "Mercedes-Benz Stadium",
   },
-  // {
-  //   id: 103,
-  //   group: "",
-  //   round: "Terceiro lugar",
-  //   homeTeam: TEAMS.,
-  //   awayTeam: TEAMS.,
-  //   datetime: new Date("2026-07-18T21:00:00Z"),
-  //   stadium: "Hard Rock Stadium",
-  // },
-  // {
-  //   id: 104,
-  //   group: "",
-  //   round: "Final",
-  //   homeTeam: TEAMS.,
-  //   awayTeam: TEAMS.,
-  //   datetime: new Date("2026-07-19T19:00:00Z"),
-  //   stadium: "MetLife Stadium",
-  // },
+  {
+    id: 103,
+    group: "",
+    round: "Terceiro lugar",
+    homeTeam: TEAMS.FRA,
+    awayTeam: TEAMS.ENG,
+    datetime: new Date("2026-07-18T21:00:00Z"),
+    stadium: "Hard Rock Stadium",
+  },
+  {
+    id: 104,
+    group: "",
+    round: "Final",
+    homeTeam: TEAMS.ESP,
+    awayTeam: TEAMS.ARG,
+    datetime: new Date("2026-07-19T19:00:00Z"),
+    stadium: "MetLife Stadium",
+  },
 ];
 
 export default MATCHES;
