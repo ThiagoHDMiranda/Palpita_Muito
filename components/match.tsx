@@ -66,7 +66,9 @@ export default function Match({
             ${isEditing && "border-2 border-neutral-500 bg-neutral-50/50"} rounded-md 
             ${isEditing ? "text-(--secondary)" : "text-gray-300"} text-center text-sm font-bold outline-none focus:outline-none`}
             value={
-              currentGuess.homeGoals && currentGuess.homeETGoals
+              currentGuess.homeGoals !== "" &&
+              currentGuess.homeGoals !== "-" &&
+              currentGuess.homeETGoals
                 ? Number(currentGuess.homeGoals) +
                   Number(currentGuess.homeETGoals)
                 : currentGuess.homeGoals
@@ -126,7 +128,9 @@ export default function Match({
               ${isEditing && "border-2 border-neutral-500 bg-neutral-50/50"} rounded-md 
               ${isEditing ? "text-(--secondary)" : "text-gray-300"} text-center text-sm font-bold outline-none focus:outline-none`}
             value={
-              currentGuess.awayGoals && currentGuess.awayETGoals
+              currentGuess.awayGoals !== "" &&
+              currentGuess.awayGoals !== "-" &&
+              currentGuess.awayETGoals
                 ? Number(currentGuess.awayGoals) +
                   Number(currentGuess.awayETGoals)
                 : currentGuess.awayGoals
