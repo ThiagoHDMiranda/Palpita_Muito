@@ -17,7 +17,6 @@ export default function Dropdown({
   setChosen,
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
-  // const isOpenRef = useRef(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   function chooseItem(index: number) {
     setChosen(index);
@@ -55,12 +54,16 @@ export default function Dropdown({
           <DownArrow color="var(--secondary)" />
         </span>
         <div
-          className={`absolute w-full flex flex-col bg-gray-300 border border-(--secondary)/60 shadow-xs shadow-green-800/80  text-[14px] rounded-md gap-1 p-1 transition-all duration-200 ${isOpen ? "opacity-100 z-10 translate-y-9" : "opacity-0 -z-10"}`}
+          className={`absolute w-full flex flex-col bg-gray-300 border border-(--secondary)/60 shadow-xs shadow-green-800/80 text-[14px] rounded-md gap-1 p-1 transition-all duration-200 
+            ${isOpen ? "opacity-100 z-10 translate-y-9" : "opacity-0 -z-10"}
+            `}
         >
           {list.map((item, index) => (
             <div
               key={item}
-              className={`cursor-pointer text-nowrap p-1 rounded-md hover:bg-(--secondary)/40 ${index === chosen && "font-bold bg-gray-400"}`}
+              className={`cursor-pointer text-nowrap p-1 rounded-md hover:bg-(--secondary)/40 
+                ${index === chosen && "font-bold bg-gray-400"}
+                `}
               onClick={() => chooseItem(index)}
             >
               {item}
