@@ -18,19 +18,13 @@ type MatchType = {
   id: number;
   group: (typeof GROUPS)[number];
   round: (typeof ROUNDS)[number];
-  homeTeam: TeamType; // Team or placeholder string like "1A", "Winner Match 73"
+  homeTeam: TeamType;
   awayTeam: TeamType;
   datetime: Date;
   stadium: StadiumsType;
-  // homeScore?: number;
-  // awayScore?: number;
-  // homePenalties?: number; // Only for knockouts
-  // awayPenalties?: number; // Only for knockouts
 };
 
 const MATCHES: MatchType[] = [
-  // ── ROUND 1 ─────────────────────────────────────────────────────────────────
-  // Group A — 2026-06-11
   {
     id: 1,
     group: "A",
@@ -49,7 +43,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-12T02:00:00Z"),
     stadium: "Estadio AKRON",
   },
-  // Group B — 2026-06-11
   {
     id: 3,
     group: "B",
@@ -68,7 +61,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-13T19:00:00Z"),
     stadium: "Levi's Stadium",
   },
-  // Group C — 2026-06-12
   {
     id: 5,
     group: "C",
@@ -87,7 +79,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-14T01:00:00Z"),
     stadium: "Gillette Stadium",
   },
-  // Group D — 2026-06-12
   {
     id: 7,
     group: "D",
@@ -106,7 +97,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-14T04:00:00Z"),
     stadium: "BC Place",
   },
-  // Group E — 2026-06-13
   {
     id: 9,
     group: "E",
@@ -125,7 +115,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-14T23:00:00Z"),
     stadium: "Lincoln Financial Field",
   },
-  // Group F — 2026-06-13
   {
     id: 11,
     group: "F",
@@ -144,7 +133,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-15T02:00:00Z"),
     stadium: "Estadio BBVA",
   },
-  // Group G — 2026-06-14
   {
     id: 13,
     group: "G",
@@ -163,7 +151,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-16T01:00:00Z"),
     stadium: "SoFi Stadium",
   },
-  // Group H — 2026-06-14
   {
     id: 15,
     group: "H",
@@ -182,7 +169,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-15T22:00:00Z"),
     stadium: "Hard Rock Stadium",
   },
-  // Group I — 2026-06-15
   {
     id: 17,
     group: "I",
@@ -201,7 +187,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-16T22:00:00Z"),
     stadium: "Gillette Stadium",
   },
-  // Group J — 2026-06-15
   {
     id: 19,
     group: "J",
@@ -220,7 +205,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-17T04:00:00Z"),
     stadium: "Levi's Stadium",
   },
-  // Group K — 2026-06-16
   {
     id: 21,
     group: "K",
@@ -239,7 +223,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-18T02:00:00Z"),
     stadium: "Estadio Azteca",
   },
-  // Group L — 2026-06-16
   {
     id: 23,
     group: "L",
@@ -259,8 +242,6 @@ const MATCHES: MatchType[] = [
     stadium: "BMO Field",
   },
 
-  // ── ROUND 2 ─────────────────────────────────────────────────────────────────
-  // Group A — 2026-06-17
   {
     id: 25,
     group: "A",
@@ -280,7 +261,6 @@ const MATCHES: MatchType[] = [
     stadium: "Estadio AKRON",
   },
 
-  // Group B — 2026-06-17
   {
     id: 27,
     group: "B",
@@ -299,7 +279,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-18T22:00:00Z"),
     stadium: "BC Place",
   },
-  // Group C — 2026-06-18
 
   {
     id: 29,
@@ -319,7 +298,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-20T00:30:00Z"),
     stadium: "Lincoln Financial Field",
   },
-  // Group D — 2026-06-18
   {
     id: 31,
     group: "D",
@@ -338,7 +316,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-20T03:00:00Z"),
     stadium: "Levi's Stadium",
   },
-  // Group E — 2026-06-19
   {
     id: 33,
     group: "E",
@@ -357,7 +334,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-21T00:00:00Z"),
     stadium: "Arrowhead Stadium",
   },
-  // Group F — 2026-06-19
   {
     id: 35,
     group: "F",
@@ -376,7 +352,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-21T04:00:00Z"),
     stadium: "Estadio BBVA",
   },
-  // Group G — 2026-06-20
   {
     id: 37,
     group: "G",
@@ -395,7 +370,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-22T01:00:00Z"),
     stadium: "BC Place",
   },
-  // Group H — 2026-06-20
   {
     id: 39,
     group: "H",
@@ -414,7 +388,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-21T22:00:00Z"),
     stadium: "Hard Rock Stadium",
   },
-  // Group I — 2026-06-21
   {
     id: 41,
     group: "I",
@@ -433,7 +406,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-23T00:00:00Z"),
     stadium: "MetLife Stadium",
   },
-  // Group J — 2026-06-21
   {
     id: 43,
     group: "J",
@@ -452,7 +424,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-23T03:00:00Z"),
     stadium: "Levi's Stadium",
   },
-  // Group K — 2026-06-22
   {
     id: 45,
     group: "K",
@@ -471,7 +442,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-24T02:00:00Z"),
     stadium: "Estadio AKRON",
   },
-  // Group L — 2026-06-22
   {
     id: 47,
     group: "L",
@@ -491,9 +461,6 @@ const MATCHES: MatchType[] = [
     stadium: "BMO Field",
   },
 
-  // ── ROUND 3 (simultaneous per group) ────────────────────────────────────────
-  // Group A — 2026-06-23
-
   {
     id: 49,
     group: "A",
@@ -512,7 +479,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-25T01:00:00Z"),
     stadium: "Estadio Azteca",
   },
-  // Group B — 2026-06-23
   {
     id: 51,
     group: "B",
@@ -531,7 +497,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-24T19:00:00Z"),
     stadium: "Lumen Field",
   },
-  // Group C — 2026-06-23
 
   {
     id: 53,
@@ -551,7 +516,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-24T22:00:00Z"),
     stadium: "Hard Rock Stadium",
   },
-  // Group D — 2026-06-24
   {
     id: 55,
     group: "D",
@@ -570,7 +534,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-26T02:00:00Z"),
     stadium: "Levi's Stadium",
   },
-  // Group E — 2026-06-24
   {
     id: 57,
     group: "E",
@@ -589,7 +552,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-25T20:00:00Z"),
     stadium: "Lincoln Financial Field",
   },
-  // Group F — 2026-06-25
   {
     id: 59,
     group: "F",
@@ -608,7 +570,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-25T23:00:00Z"),
     stadium: "AT&T Stadium",
   },
-  // Group G — 2026-06-25
 
   {
     id: 61,
@@ -628,7 +589,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-27T03:00:00Z"),
     stadium: "BC Place",
   },
-  // Group H — 2026-06-25
   {
     id: 63,
     group: "H",
@@ -648,7 +608,6 @@ const MATCHES: MatchType[] = [
     stadium: "Estadio AKRON",
   },
 
-  // Group I — 2026-06-26
   {
     id: 65,
     group: "I",
@@ -668,7 +627,6 @@ const MATCHES: MatchType[] = [
     stadium: "Gillette Stadium",
   },
 
-  // Group J — 2026-06-26
   {
     id: 67,
     group: "J",
@@ -687,7 +645,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-28T02:00:00Z"),
     stadium: "Arrowhead Stadium",
   },
-  // Group K — 2026-06-27
 
   {
     id: 69,
@@ -707,7 +664,6 @@ const MATCHES: MatchType[] = [
     datetime: new Date("2026-06-27T23:30:00Z"),
     stadium: "Hard Rock Stadium",
   },
-  // Group L — 2026-06-27
   {
     id: 71,
     group: "L",

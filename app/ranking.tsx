@@ -85,7 +85,6 @@ export default function Ranking() {
       };
     });
 
-    // console.log("usersAndGuesses: ", usersAndGuesses);
     setUsers(usersAndGuessesOrdered);
   }
 
